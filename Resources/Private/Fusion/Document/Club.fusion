@@ -1,0 +1,5 @@
+prototype(Yalento.Neos.League:Document.Club) < prototype(Yalento.Neos.League:Document.Page) {
+
+    body = '<app-yalento-league-club>hallo</app-yalento-league-club>'
+
+}

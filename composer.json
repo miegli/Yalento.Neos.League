@@ -1,0 +1,18 @@
+{
+    "description": "",
+    "type": "neos-package",
+    "name": "yalento/neos-league",
+    "require": {
+        "neos/flow": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Yalento\\Neos\\League\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Yalento.Neos.League"
+        }
+    }
+}

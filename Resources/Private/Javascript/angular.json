@@ -1,0 +1,124 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "LeagueWebComponent": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/league-web-component",
+      "sourceRoot": "projects/league-web-component/src",
+      "prefix": "app-yalento-league",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "../../../Resources/Public/dist",
+            "index": "projects/league-web-component/src/index.html",
+            "main": "projects/league-web-component/src/main.ts",
+            "polyfills": "projects/league-web-component/src/polyfills.ts",
+            "tsConfig": "projects/league-web-component/tsconfig.json",
+            "aot": true,
+            "assets": [
+              "projects/league-web-component/src/favicon.ico",
+              "projects/league-web-component/src/assets"
+            ],
+            "styles": [
+              "projects/league-web-component/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/league-web-component/src/environments/environment.ts",
+                  "with": "projects/league-web-component/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "LeagueWebComponent:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "LeagueWebComponent:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "LeagueWebComponent:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/league-web-component/src/test.ts",
+            "polyfills": "projects/league-web-component/src/polyfills.ts",
+            "tsConfig": "projects/league-web-component/tsconfig.spec.json",
+            "karmaConfig": "projects/league-web-component/karma.conf.js",
+            "assets": [
+              "projects/league-web-component/src/favicon.ico",
+              "projects/league-web-component/src/assets"
+            ],
+            "styles": [
+              "projects/league-web-component/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/league-web-component/**/*.ts",
+              "projects/league-web-component/**/*.html"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/league-web-component/e2e/protractor.conf.js",
+            "devServerTarget": "LeagueWebComponent:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "LeagueWebComponent:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "LeagueWebComponent"
+}

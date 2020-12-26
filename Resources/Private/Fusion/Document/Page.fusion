@@ -1,0 +1,21 @@
+prototype(Yalento.Neos.League:Document.Page) < prototype(Neos.Fusion:Component) {
+
+    body = null
+    bodyClass = null
+
+    renderer = Neos.Neos:Page {
+        head {
+            stylesheets {
+                site = Yalento.Neos.League:Document.Fragment.StyleSheets
+            }
+            javascripts {
+                site = Yalento.Neos.League:Document.Fragment.JavaScripts
+            }
+            metadata = Yalento.Neos.League:Document.Fragment.MetaData
+        }
+
+        bodyTag.attributes.class = ${props.bodyClass}
+        body = ${props.body}
+    }
+
+}

@@ -1,0 +1,16 @@
+Neos:
+  Neos:
+    fusion:
+      autoInclude:
+        Yalento.Neos.League: true
+    userInterface:
+      translation:
+        autoInclude:
+          Yalento.Neos.League:
+            - Main
+            - 'NodeTypes/*'
+    nodeTypes:
+      groups:
+        league:
+          position: 10
+          label: 'Yalento.Neos.League:Main:nodeTypes.groups.league'

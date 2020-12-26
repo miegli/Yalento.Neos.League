@@ -1,0 +1,8 @@
+/**
+ * Stylesheets of the page to be included in the header
+ */
+prototype(Yalento.Neos.League:Document.Fragment.StyleSheets) < prototype(Neos.Fusion:Component) {
+    renderer = afx`
+        <link rel="stylesheet" href={StaticResource.uri('Yalento.Neos.League', 'Public/dist/styles.css')} media="all" />
+    `
+}

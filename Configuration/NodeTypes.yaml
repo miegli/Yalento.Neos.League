@@ -1,0 +1,21 @@
+'Neos.Neos:ContentCollection':
+  constraints:
+    nodeTypes:
+      'Yalento.Neos.League.Category': false
+
+'Yalento.Neos.League:ContentCollection':
+  superTypes:
+    'Neos.Neos:ContentCollection': true
+  constraints:
+    nodeTypes:
+      'Yalento.Neos.League.Category': false
+
+'Yalento.Neos.League:Content':
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    inspector:
+      groups:
+        general:
+          label: i18n
+          position: 10

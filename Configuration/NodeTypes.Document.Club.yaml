@@ -1,0 +1,7 @@
+'Yalento.Neos.League:Document.Club':
+  superTypes:
+    'Yalento.Neos.League:Document.Page': true
+  ui:
+    label: i18n
+    icon: 'flag'
+    group: league
