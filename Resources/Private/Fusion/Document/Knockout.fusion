@@ -1,0 +1,5 @@
+prototype(Yalento.Neos.League:Document.Knockout) < prototype(Yalento.Neos.League:Document.Page) {
+
+    body = ''
+
+}

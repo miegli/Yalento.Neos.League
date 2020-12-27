@@ -4,8 +4,33 @@
     'Neos.Neos:Document': true
   constraints:
     nodeTypes:
-      # Neos.NodeTypes is deprecated and we prevent adding documents from this package
-      'Neos.NodeTypes:Page': false
-      # Homepage and NotFoundPage are not meant to be added by editors
-      'Neos.Demo:Document.Homepage': false
-      'Neos.Demo:Document.NotFoundPage': false
+      'Neos.Neos:Document': false
+      'Yalento.Neos.League:Document.Season': false
+  ui:
+    label: 'Document'
+    group: 'general'
+    search:
+      searchCategory: 'Documents'
+    inspector:
+      groups:
+        league:
+          position: 1
+          label: 'Yalento.Neos.League:Main:nodeTypes.groups.league'
+'Neos.Neos:Document':
+  constraints:
+    nodeTypes:
+      'Yalento.Neos.League:Document.Season': true
+      'Yalento.Neos.League:Document.Club': false
+      'Yalento.Neos.League:Document.ClubFolder': false
+      'Yalento.Neos.League:Document.Team': false
+      'Yalento.Neos.League:Document.TeamCommunity': false
+      'Yalento.Neos.League:Document.League': false
+      'Yalento.Neos.League:Document.LeagueFolder': false
+      'Yalento.Neos.League:Document.Group': false
+      'Yalento.Neos.League:Document.Table.1': false
+      'Yalento.Neos.League:Document.Table.2': false
+      'Yalento.Neos.League:Document.TableTeam': false
+      'Yalento.Neos.League:Document.Playoffs': false
+      'Yalento.Neos.League:Document.Chessboard': false
+      'Yalento.Neos.League:Document.SingleGame': false
+      'Yalento.Neos.League:Document.Knockout': false

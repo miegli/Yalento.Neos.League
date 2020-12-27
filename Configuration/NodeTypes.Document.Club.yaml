@@ -5,3 +5,7 @@
     label: i18n
     icon: 'flag'
     group: league
+  constraints:
+    nodeTypes:
+      'Yalento.Neos.League:Document.Team': true
+      'Yalento.Neos.League:Document.TeamCommunity': true

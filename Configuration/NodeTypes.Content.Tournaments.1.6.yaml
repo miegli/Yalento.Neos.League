@@ -1,0 +1,3 @@
+'Yalento.Neos.League:Content.Tournaments.1.6':
+  superTypes:
+    'Yalento.Neos.League:Content.Tournaments': true

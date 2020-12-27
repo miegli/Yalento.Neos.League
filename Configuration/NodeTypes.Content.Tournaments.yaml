@@ -1,0 +1,9 @@
+'Yalento.Neos.League:Content.Tournaments':
+  abstract: true
+  superTypes:
+    'Yalento.Neos.League:Content': true
+  ui:
+    label: i18n
+    icon: 'calendar-alt'
+    group: seriesOfGames
+    position: 1

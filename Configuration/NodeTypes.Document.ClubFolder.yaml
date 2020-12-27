@@ -1,0 +1,14 @@
+'Yalento.Neos.League:Document.ClubFolder':
+  superTypes:
+    'Yalento.Neos.League:Document.Page': true
+  ui:
+    label: i18n
+    icon: 'flag-alt'
+    group: league
+  constraints:
+    nodeTypes:
+      'Yalento.Neos.League:Document.Club': true
+      'Yalento.Neos.League:Document.ClubFolder': false
+  properties:
+    title:
+      defaultValue: 'Vereine'

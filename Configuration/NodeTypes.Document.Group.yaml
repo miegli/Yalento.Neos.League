@@ -1,0 +1,18 @@
+'Yalento.Neos.League:Document.Group':
+  superTypes:
+    'Yalento.Neos.League:Document.Page': true
+  label: ${q(node).property('title') + ' (' + q(node).parent().parent().property('title') + ', ' + q(node).parent().property('title') + ')'}
+  ui:
+    label: i18n
+    icon: 'layer-group'
+    group: league
+    position: 1
+  constraints:
+    nodeTypes:
+      'Yalento.Neos.League:Document.Group': false
+      'Yalento.Neos.League:Document.Table.1': true
+      'Yalento.Neos.League:Document.Table.2': true
+      'Yalento.Neos.League:Document.Playoffs': true
+      'Yalento.Neos.League:Document.Chessboard': true
+      'Yalento.Neos.League:Document.SingleGame': true
+      'Yalento.Neos.League:Document.Knockout': true

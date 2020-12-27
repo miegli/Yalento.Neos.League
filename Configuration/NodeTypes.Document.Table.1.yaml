@@ -1,0 +1,129 @@
+'Yalento.Neos.League:Document.Table.1.6':
+  superTypes:
+    'Yalento.Neos.League:Document.Table.1': true
+  ui:
+    label: '6'
+    position: 6
+  childNodes:
+    team1:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team2:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team3:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team4:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team5:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team6:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    games:
+      type: 'Yalento.Neos.League:ContentCollection.Games.1.6'
+
+'Yalento.Neos.League:Document.Table.1.7':
+  superTypes:
+    'Yalento.Neos.League:Document.Table.1': true
+  ui:
+    label: '7'
+    position: 7
+  childNodes:
+    team1:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team2:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team3:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team4:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team5:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team6:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team7:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    games:
+      type: 'Yalento.Neos.League:ContentCollection.Games.1.7'
+
+'Yalento.Neos.League:Document.Table.1.8':
+  superTypes:
+    'Yalento.Neos.League:Document.Table.1': true
+  ui:
+    label: '8'
+    position: 8
+  childNodes:
+    team1:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team2:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team3:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team4:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team5:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team6:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team7:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team8:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    games:
+      type: 'Yalento.Neos.League:ContentCollection.Games.1.8'
+
+'Yalento.Neos.League:Document.Table.1.9':
+  superTypes:
+    'Yalento.Neos.League:Document.Table.1': true
+  ui:
+    label: '9'
+    position: 9
+  childNodes:
+    team1:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team2:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team3:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team4:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team5:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team6:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team7:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team8:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team9:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    games:
+      type: 'Yalento.Neos.League:ContentCollection.Games.1.9'
+
+'Yalento.Neos.League:Document.Table.1.10':
+  superTypes:
+    'Yalento.Neos.League:Document.Table.1': true
+  ui:
+    label: '10'
+    position: 10
+  childNodes:
+    team1:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team2:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team3:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team4:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team5:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team6:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team7:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team8:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team9:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    team10:
+      type: 'Yalento.Neos.League:Document.TableTeam'
+    games:
+      type: 'Yalento.Neos.League:ContentCollection.Games.1.10'

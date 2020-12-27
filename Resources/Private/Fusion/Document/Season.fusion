@@ -1,0 +1,5 @@
+prototype(Yalento.Neos.League:Document.Season) < prototype(Yalento.Neos.League:Document.Page) {
+
+    body = 'Season'
+
+}

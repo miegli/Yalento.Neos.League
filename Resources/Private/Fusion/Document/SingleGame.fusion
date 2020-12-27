@@ -1,0 +1,5 @@
+prototype(Yalento.Neos.League:Document.SingleGame) < prototype(Yalento.Neos.League:Document.Page) {
+
+    body = ''
+
+}

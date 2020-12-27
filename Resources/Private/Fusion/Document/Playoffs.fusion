@@ -1,0 +1,5 @@
+prototype(Yalento.Neos.League:Document.Playoffs) < prototype(Yalento.Neos.League:Document.Page) {
+
+    body = ''
+
+}

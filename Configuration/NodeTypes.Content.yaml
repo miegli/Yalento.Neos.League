@@ -1,0 +1,6 @@
+'Yalento.Neos.League:Content':
+  abstract: true
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    group: league

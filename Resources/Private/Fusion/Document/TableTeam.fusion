@@ -1,0 +1,5 @@
+prototype(Yalento.Neos.League:Document.TableTeam) < prototype(Yalento.Neos.League:Document.Page) {
+
+    body = ''
+
+}

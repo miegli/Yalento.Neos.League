@@ -1,0 +1,12 @@
+'Yalento.Neos.League:Document.Season':
+  superTypes:
+    'Neos.Neos:Document': true
+  ui:
+    label: i18n
+    icon: 'medal'
+    group: league
+  constraints:
+    nodeTypes:
+      'Yalento.Neos.League:Document.ClubFolder': true
+      'Yalento.Neos.League:Document.LeagueFolder': true
+      'Yalento.Neos.League:Document.Season': false

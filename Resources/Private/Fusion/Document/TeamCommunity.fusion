@@ -1,0 +1,3 @@
+prototype(Yalento.Neos.League:Document.TeamCommunity) < prototype(Yalento.Neos.League:Document.Team) {
+
+}

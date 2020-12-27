@@ -1,0 +1,8 @@
+'Yalento.Neos.League:ContentCollection.Games':
+  abstract: true
+  superTypes:
+    'Yalento.Neos.League:ContentCollection': true
+  constraints:
+    nodeTypes:
+      'Yalento.Neos.League:Content.Game': true
+      '*': false

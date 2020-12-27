@@ -1,0 +1,9 @@
+'Yalento.Neos.League:Content.SingleGames':
+  abstract: true
+  superTypes:
+    'Yalento.Neos.League:Content': true
+  ui:
+    label: i18n
+    icon: 'calendar-day'
+    group: seriesOfGames
+    position: 2

@@ -1,0 +1,11 @@
+'Yalento.Neos.League:Document.LeagueFolder':
+  superTypes:
+    'Yalento.Neos.League:Document.Page': true
+  ui:
+    label: i18n
+    icon: 'folder'
+    group: league
+  constraints:
+    nodeTypes:
+      'Yalento.Neos.League:Document.League': true
+      'Yalento.Neos.League:Document.LeagueFolder': false

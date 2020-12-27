@@ -1,10 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file original="" product-name="Yalento.Neos.League" source-language="en" datatype="plaintext">
-		<body>
+    <file original="" product-name="Yalento.Neos.League" source-language="en" datatype="plaintext">
+        <body>
             <trans-unit id="nodeTypes.groups.league" xml:space="preserve">
                 <source>Liga</source>
-                <target state="needs-translation">Liga</target></trans-unit>
-		</body>
-	</file>
+                <target state="needs-translation">Liga</target>
+            </trans-unit>
+            <trans-unit id="nodeTypes.groups.table1" xml:space="preserve">
+                <source>Einfache Runde (Tabelle / Teams)</source>
+                <target state="needs-translation">Einfache Runde (Tabelle / Teams)</target>
+            </trans-unit>
+            <trans-unit id="nodeTypes.groups.table2" xml:space="preserve">
+                <source>Hin-/Rückrunde (Tabelle / Teams)</source>
+                <target state="needs-translation">Hin-/Rückrunde (Tabelle / Teams)</target>
+            </trans-unit>
+            <trans-unit id="nodeTypes.groups.singleGame" xml:space="preserve">
+                <source>Einzelnes Spiel (manuell)</source>
+                <target state="needs-translation">Einzelnes Spiel</target>
+            </trans-unit>
+            <trans-unit id="nodeTypes.groups.seriesOfGames" xml:space="preserve">
+                <source>Spiele-Serie (automatisch)</source>
+                <target state="needs-translation">Spiele-Serie (automatisch)</target>
+            </trans-unit>
+        </body>
+    </file>
 </xliff>

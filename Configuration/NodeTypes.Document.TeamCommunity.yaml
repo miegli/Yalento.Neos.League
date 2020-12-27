@@ -1,0 +1,19 @@
+'Yalento.Neos.League:Document.TeamCommunity':
+  superTypes:
+    'Yalento.Neos.League:Document.Page': true
+  ui:
+    label: i18n
+    icon: 'user-friends'
+    group: league
+  properties:
+    linkedTeam:
+      type: reference
+      ui:
+        label: i18n
+        inspector:
+          group: 'document'
+          position: 1
+          editorOptions:
+            nodeTypes: [ 'Yalento.Neos.League:Document.Team' ]
+      validation:
+        'Neos.Neos/Validation/NotEmptyValidator': true

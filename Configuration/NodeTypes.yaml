@@ -8,7 +8,7 @@
     'Neos.Neos:ContentCollection': true
   constraints:
     nodeTypes:
-      'Yalento.Neos.League.Category': false
+      '*': false
 
 'Yalento.Neos.League:Content':
   superTypes:

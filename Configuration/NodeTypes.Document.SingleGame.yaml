@@ -1,0 +1,12 @@
+'Yalento.Neos.League:Document.SingleGame':
+  superTypes:
+    'Yalento.Neos.League:Document.Page': true
+  label: ${q(node).property('title') + ' (' + q(node).parent().parent().parent().property('title')+ ', ' + q(node).parent().parent().property('title') + ', ' + q(node).parent().property('title') + ')'}
+  ui:
+    label: i18n
+    icon: 'balance-scale-right'
+    group: league
+    position: 2
+  constraints:
+    nodeTypes:
+      'Yalento.Neos.League:Document.SingleGame': false

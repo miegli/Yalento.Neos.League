@@ -1,0 +1,6 @@
+'Yalento.Neos.League:Content.Game':
+  superTypes:
+    'Yalento.Neos.League:Content': true
+  ui:
+    label: i18n
+    icon: 'gamepad'

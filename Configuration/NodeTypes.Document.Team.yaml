@@ -1,0 +1,7 @@
+'Yalento.Neos.League:Document.Team':
+  superTypes:
+    'Yalento.Neos.League:Document.Page': true
+  ui:
+    label: i18n
+    icon: 'users'
+    group: league

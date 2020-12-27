@@ -9,8 +9,77 @@ Neos:
           Yalento.Neos.League:
             - Main
             - 'NodeTypes/*'
+      navigateComponent:
+        nodeTree:
+          presets:
+            'clubs':
+              baseNodeType: 'Yalento.Neos.League:Document.Club'
+              ui:
+                label: 'Vereine'
+                icon: 'icon-flag'
+            'teams':
+              baseNodeType: 'Yalento.Neos.League:Document.Team, Yalento.Neos.League:Document.TeamCommunity'
+              ui:
+                label: 'Teams'
+                icon: 'users'
+            'teamsCommunity':
+              baseNodeType: 'Yalento.Neos.League:Document.TeamCommunity'
+              ui:
+                label: 'Spielgemeinschaften'
+                icon: 'user-friends'
+            'groups':
+              baseNodeType: 'Yalento.Neos.League:Document.Group'
+              ui:
+                label: 'Gruppen'
+                icon: 'layer-group'
+            'leagues':
+              baseNodeType: 'Yalento.Neos.League:Document.League'
+              ui:
+                label: 'Ligen'
+                icon: 'trophy'
+            'tables':
+              baseNodeType: 'Yalento.Neos.League:Document.Table'
+              ui:
+                label: 'Tabellen'
+                icon: 'list-ol'
+            'playoffs':
+              baseNodeType: 'Yalento.Neos.League:Document.Playoffs'
+              ui:
+                label: 'Playoffs'
+                icon: 'sitemap'
+            'knockout':
+              baseNodeType: 'Yalento.Neos.League:Document.Knockout'
+              ui:
+                label: 'KO-Spiele'
+                icon: 'fighter-jet'
+            'chessboard':
+              baseNodeType: 'Yalento.Neos.League:Document.Chessboard'
+              ui:
+                label: 'Schachturnier'
+                icon: 'chess-board'
+            'singleGame':
+              baseNodeType: 'Yalento.Neos.League:Document.SingleGame, Yalento.Neos.League:Content.Game'
+              ui:
+                label: 'Einzelne Spiel'
+                icon: 'balance-scale-right'
     nodeTypes:
       groups:
         league:
-          position: 10
+          position: 1
           label: 'Yalento.Neos.League:Main:nodeTypes.groups.league'
+        table1:
+          position: 2
+          label: 'Yalento.Neos.League:Main:nodeTypes.groups.table1'
+          collapsed: true
+        table2:
+          position: 3
+          label: 'Yalento.Neos.League:Main:nodeTypes.groups.table2'
+          collapsed: true
+        singleGame:
+          position: 4
+          label: 'Yalento.Neos.League:Main:nodeTypes.groups.singleGame'
+          collapsed: false
+        seriesOfGames:
+          position: 5
+          label: 'Yalento.Neos.League:Main:nodeTypes.groups.seriesOfGames'
+          collapsed: false
