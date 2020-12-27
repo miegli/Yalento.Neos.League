@@ -3,10 +3,10 @@
     <file original="" product-name="Yalento.Neos.League" source-language="en" datatype="plaintext">
         <body>
             <trans-unit id="ui.label" xml:space="preserve">
-                <source>Team</source>
+                <source>Turnier</source>
             </trans-unit>
-            <trans-unit id="properties.team" xml:space="preserve">
-                <source>Team</source>
+            <trans-unit id="properties.date" xml:space="preserve">
+                <source>Datum</source>
             </trans-unit>
         </body>
     </file>

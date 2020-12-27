@@ -1,5 +1,5 @@
 prototype(Yalento.Neos.League:Document.League) < prototype(Yalento.Neos.League:Document.Page) {
 
-    body = ''
+    body = ${Yalento.Neos.League.Label.team()}
 
 }

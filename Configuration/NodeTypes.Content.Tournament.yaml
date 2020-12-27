@@ -1,0 +1,21 @@
+'Yalento.Neos.League:Content.Tournament':
+  abstract: true
+  superTypes:
+    'Yalento.Neos.League:Content': true
+  label: ${Date.format(q(node).property('date'),'d.m.Y')}
+  ui:
+    label: i18n
+    icon: 'calendar-alt'
+    group: league
+    position: 1
+  properties:
+    date:
+      type: DateTime
+      defaultValue: 'today midnight'
+      ui:
+        label: i18n
+        inspector:
+          group: 'league'
+          position: 1
+          editorOptions:
+            format: 'd.m.Y'

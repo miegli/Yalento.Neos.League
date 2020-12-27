@@ -83,3 +83,6 @@ Neos:
           position: 5
           label: 'Yalento.Neos.League:Main:nodeTypes.groups.seriesOfGames'
           collapsed: false
+  Fusion:
+    defaultContext:
+      Yalento.Neos.League.Label: Yalento\Neos\League\Eel\Helper\LabelHelper

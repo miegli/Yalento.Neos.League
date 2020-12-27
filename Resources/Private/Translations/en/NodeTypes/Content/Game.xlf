@@ -5,6 +5,27 @@
             <trans-unit id="ui.label" xml:space="preserve">
                 <source>Spiel</source>
             </trans-unit>
+            <trans-unit id="properties.date" xml:space="preserve">
+                <source>Datum/Zeit</source>
+            </trans-unit>
+            <trans-unit id="properties.place" xml:space="preserve">
+                <source>Platz/Feld</source>
+            </trans-unit>
+            <trans-unit id="properties.place.selectBoxEditor.values.1" xml:space="preserve">
+                <source>1</source>
+            </trans-unit>
+            <trans-unit id="properties.place.selectBoxEditor.values.2" xml:space="preserve">
+                <source>2</source>
+            </trans-unit>
+            <trans-unit id="properties.place.selectBoxEditor.values.3" xml:space="preserve">
+                <source>3</source>
+            </trans-unit>
+            <trans-unit id="properties.home" xml:space="preserve">
+                <source>Heim</source>
+            </trans-unit>
+            <trans-unit id="properties.away" xml:space="preserve">
+                <source>Gast</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>
