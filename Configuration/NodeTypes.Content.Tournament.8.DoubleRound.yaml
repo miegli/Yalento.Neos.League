@@ -66,6 +66,67 @@
 'Yalento.Neos.League:Content.Tournament.8.DoubleRound.2':
   superTypes:
     'Yalento.Neos.League:Content.Tournament': true
+  childNodes:
+    game1:
+      type: 'Yalento.Neos.League:Content.Game'
+      defaultValue:
+        home: team5
+        away: team3
+        date: 09:00
+    game2:
+      type: 'Yalento.Neos.League:Content.Game'
+      defaultValue:
+        home: team6
+        away: team4
+        date: 09:55
+    game3:
+      type: 'Yalento.Neos.League:Content.Game'
+      defaultValue:
+        home: team8
+        away: team3
+        date: 10:50
+    game4:
+      type: 'Yalento.Neos.League:Content.Game'
+      defaultValue:
+        home: team5
+        away: team4
+        date: 11:45
+    game5:
+      type: 'Yalento.Neos.League:Content.Game'
+      defaultValue:
+        home: team6
+        away: team7
+        date: 12:40
+    game6:
+      type: 'Yalento.Neos.League:Content.Game'
+      defaultValue:
+        home: team5
+        away: team8
+        date: 13:35
+    game7:
+      type: 'Yalento.Neos.League:Content.Game'
+      defaultValue:
+        home: team7
+        away: team1
+        date: 14:30
+    game8:
+      type: 'Yalento.Neos.League:Content.Game'
+      defaultValue:
+        home: team6
+        away: team2
+        date: 15:25
+    game9:
+      type: 'Yalento.Neos.League:Content.Game'
+      defaultValue:
+        home: team8
+        away: team1
+        date: 16:20
+    game10:
+      type: 'Yalento.Neos.League:Content.Game'
+      defaultValue:
+        home: team7
+        away: team2
+        date: 17:15
 
 'Yalento.Neos.League:Content.Tournament.8.DoubleRound.3':
   superTypes:

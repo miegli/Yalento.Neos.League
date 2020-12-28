@@ -23,6 +23,7 @@
           position: 2
           editorOptions:
             format: 'd.m.Y H:i'
+            minuteStep: 1
     place:
       type: string
       ui:

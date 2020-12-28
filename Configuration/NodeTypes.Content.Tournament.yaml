@@ -27,6 +27,18 @@
           position: 2
           editorOptions:
             format: 'd.m.Y'
+    startTime:
+      type: DateTime
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        inspector:
+          group: 'league'
+          position: 10
+          editorOptions:
+            allowEmpty: true
+            format: 'H:i'
+            minuteStep: 1
     _hidden:
       ui:
         label: i18n

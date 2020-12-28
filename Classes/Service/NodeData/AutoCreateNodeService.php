@@ -9,6 +9,7 @@ use Neos\ContentRepository\Domain\Model\NodeType;
 use Neos\ContentRepository\Domain\Projection\Content\TraversableNodeInterface;
 use Neos\ContentRepository\Domain\Repository\NodeDataRepository;
 use Neos\Eel\FlowQuery\FlowQuery;
+use Neos\Eel\Helper\DateHelper;
 use Neos\Flow\Annotations as Flow;
 use Neos\Neos\Service\NodeOperations;
 
@@ -36,7 +37,7 @@ class AutoCreateNodeService
      * @param NodeData $nodeData nodeType that contains 'defaultValue' in childNode configuration
      * @throws \Neos\ContentRepository\Exception\NodeTypeNotFoundException
      */
-    public function createFromChildNodeDefaultValues(NodeData $nodeData): NodeData
+    public function createTournamentGamesFromChildNodeDefaultValues(NodeData $nodeData): NodeData
     {
         if ($nodeData->getParent()) {
 
@@ -49,8 +50,40 @@ class AutoCreateNodeService
 
             if ($nodeType->getConfiguration('childNodes')) {
                 $index = 0;
+                /** @var \DateInterval $deltaDateInterval * */
+                $deltaDateInterval = null;
+                /** @var \DateTime $tournamentStartTime */
+                $tournamentStartTime = $nodeData->getParent()->getProperty('startTime');
+                if (is_array($tournamentStartTime)) {
+                    $tournamentStartTime = new \DateTime($tournamentStartTime['date']);
+                }
+                /** @var \DateTime $tournamentDate */
+                $tournamentDate = $nodeData->getParent()->getProperty('date');
+                if (is_array($tournamentDate)) {
+                    $tournamentDate = new \DateTime($tournamentDate['date']);
+                }
+
                 foreach ($nodeType->getConfiguration('childNodes') as $childNodeKey => $childNode) {
                     $index++;
+
+                    /** pre calculate delta startTime */
+                    if ($index === 1 && !empty($childNode['defaultValue'])) {
+                        $childNodeDefaultProperties = $childNode['defaultValue'];
+                        foreach ($childNodeDefaultProperties as $key => $value) {
+                            if ($key === 'date' && preg_match('/([0-9]{2}):([0-9]{2})/', $value)) {
+                                list($hours, $minutes) = explode(":", $value);
+                                $helper = new DateHelper();
+                                $value = new \DateTime($tournamentDate ? $tournamentDate->format('Y-m-d H:i:00') : 'now', new \DateTimeZone("UTC"));
+                                $value->setTime(intval($hours), intval($minutes), 0);
+                                if ($deltaDateInterval === null && $tournamentStartTime) {
+                                    $tournamentStartTime->setDate(intval($tournamentDate->format('Y')), intval($tournamentDate->format('m')), intval($tournamentDate->format('d')));
+                                    $deltaDateInterval = $helper->diff($value, $tournamentStartTime);
+                                }
+                            }
+                        }
+                    }
+
+
                     if (!empty($childNode['defaultValue']) && $childNodeKey === $nodeData->getName()) {
                         $childNodeDefaultProperties = $childNode['defaultValue'];
                         $childNodes = $parentNode && $parentNode->getParent() ? $parentNode->getParent()->getNodeType()->getConfiguration('childNodes') : array();
@@ -63,17 +96,32 @@ class AutoCreateNodeService
                                 }
                             } else {
                                 if ($key === 'date') {
+
                                     if (preg_match('/([0-9]{2}):([0-9]{2})/', $value)) {
                                         list($hours, $minutes) = explode(":", $value);
-                                        $value = new \DateTime('now', new \DateTimeZone("UTC"));
+                                        $helper = new DateHelper();
+                                        $value = new \DateTime($tournamentDate ? $tournamentDate->format('Y-m-d H:i:00') : 'now', new \DateTimeZone("UTC"));
                                         $value->setTime(intval($hours), intval($minutes), 0);
+
+                                        if ($index === 1 && $tournamentStartTime) {
+                                            $tournamentStartTime->setDate(intval($tournamentDate->format('Y')), intval($tournamentDate->format('m')), intval($tournamentDate->format('d')));
+                                            $deltaDateInterval = $helper->diff($value, $tournamentStartTime);
+                                        }
+                                        if ($deltaDateInterval) {
+                                            $value = $helper->add($value, $deltaDateInterval);
+                                        }
+
                                     } else {
                                         $value = new \DateTime($value, new \DateTimeZone("UTC"));
                                     }
+
+                                    if ($index === 1 && !$tournamentStartTime) {
+                                        $nodeData->getParent()->setProperty('startTime', $value);
+                                    }
+
                                 }
 
                                 if (is_string($value) && preg_match('/\$index/', $value)) {
-
                                     $value = str_replace('$index', $index, $value);
                                 }
 

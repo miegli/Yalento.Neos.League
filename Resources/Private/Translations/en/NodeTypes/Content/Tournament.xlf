@@ -14,6 +14,9 @@
             <trans-unit id="properties.title" xml:space="preserve">
                 <source>Bezeichnung</source>
             </trans-unit>
+            <trans-unit id="properties.startTime" xml:space="preserve">
+                <source>Startzeit (1. Spiel)</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>
