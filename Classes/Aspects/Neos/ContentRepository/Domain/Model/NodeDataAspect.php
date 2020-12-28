@@ -16,6 +16,7 @@ use Yalento\Neos\League\Service\NodeData\AutoCreateNodeService;
 class NodeDataAspect
 {
 
+    private $timeZone = 'Europe/Zurich';
 
     /**
      * @Flow\Inject
@@ -145,9 +146,9 @@ class NodeDataAspect
         }
 
         /** @var \DateTime $tournamentDate */
-        $tournamentDate = new \DateTime($node->getProperty('date')->format('Y-m-d 00:00:00'), new \DateTimeZone("UTC"));;
+        $tournamentDate = new \DateTime($node->getProperty('date')->format('Y-m-d 00:00:00'), new \DateTimeZone($this->timeZone));;
         /** @var \DateTime $tournamentStartTime */
-        $tournamentStartTime = new \DateTime($tournamentDate->format('Y-m-d') . ' ' . $value->format('H:i:00'), new \DateTimeZone("UTC"));
+        $tournamentStartTime = new \DateTime($tournamentDate->format('Y-m-d') . ' ' . $value->format('H:i:00'), new \DateTimeZone($this->timeZone));
         $helper = new DateHelper();
 
         if (!$node->getProperty('date')) {
@@ -168,7 +169,7 @@ class NodeDataAspect
                     if (isset($defaultValueProperties['date']) && preg_match('/([0-9]{2}):([0-9]{2})/', $defaultValueProperties['date'])) {
                         list($hours, $minutes) = explode(":", $defaultValueProperties['date']);
 
-                        $gameDate = new \DateTime($tournamentDate->format("Y-m-d $hours:$minutes:00"), new \DateTimeZone("UTC"));
+                        $gameDate = new \DateTime($tournamentDate->format("Y-m-d $hours:$minutes:00"), new \DateTimeZone($this->timeZone));
 
                         if ($deltaDateInterval === null && $tournamentStartTime) {
                             list($tournamentStartTimeHours, $tournamentStartTimeMinutes) = explode(":", $tournamentStartTime->format("H:i"));

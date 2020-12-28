@@ -12,7 +12,6 @@ namespace Yalento\Neos\League\Domain\Model;
  * source code.
  */
 
-use Neos\Eel\Helper\DateHelper;
 use Neos\Flow\Annotations as Flow;
 use Neos\ContentRepository\Domain\Model\NodeLabelGeneratorInterface;
 
@@ -29,7 +28,6 @@ use Neos\ContentRepository\Domain\Model\NodeLabelGeneratorInterface;
 class NodeLabelGenerator implements NodeLabelGeneratorInterface
 {
 
-
     public function getLabel(\Neos\ContentRepository\Domain\Projection\Content\NodeInterface $node): string
     {
 
@@ -38,16 +36,14 @@ class NodeLabelGenerator implements NodeLabelGeneratorInterface
             if ($node->getProperty('title')) {
                 $name = $node->getProperty('title');
                 if ($node->getProperty('date')) {
-                    $dateHelper = new DateHelper();
-                    $name .= ' (' . $dateHelper->format($node->getProperty('date'), 'd.m.Y') . ')';
+                    $name .= ' (' . $this->formatDate($node->getProperty('date'), 'd.m.Y') . ')';
                 }
                 return $name;
             }
 
             $name = '(' . explode("round", $node->getNodeName())[1] . ')';
             if ($node->getProperty('date')) {
-                $dateHelper = new DateHelper();
-                $name .= ' ' . $dateHelper->format($node->getProperty('date'), 'd.m.Y');
+                $name .= ' ' . $this->formatDate($node->getProperty('date'), 'd.m.Y');
             }
             return $name;
         }
@@ -67,8 +63,7 @@ class NodeLabelGenerator implements NodeLabelGeneratorInterface
             $name = '';
 
             if ($node->getProperty('date')) {
-                $dateHelper = new DateHelper();
-                $name .= ' ⏰ ' . $dateHelper->format($node->getProperty('date'), 'H:i');
+                $name .= ' ⏰ ' . $this->formatDate($node->getProperty('date'), 'H:i');
             }
 
             if ($node->getProperty('title')) {
@@ -88,4 +83,16 @@ class NodeLabelGenerator implements NodeLabelGeneratorInterface
 
         return '';
     }
+
+    private function formatDate(\DateTime $dateTime, string $format): string
+    {
+
+        if (!$dateTime) {
+            return '';
+        }
+
+        return $dateTime->setTimezone(new \DateTimeZone('Europe/Zurich'))->format($format);
+
+    }
+
 }

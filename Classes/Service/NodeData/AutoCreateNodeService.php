@@ -20,6 +20,8 @@ use Neos\Neos\Service\NodeOperations;
  */
 class AutoCreateNodeService
 {
+    
+    private $timeZone = 'Europe/Zurich';
 
     /**
      * @Flow\Inject
@@ -55,12 +57,12 @@ class AutoCreateNodeService
                 /** @var \DateTime $tournamentStartTime */
                 $tournamentStartTime = $nodeData->getParent()->getProperty('startTime');
                 if (is_array($tournamentStartTime)) {
-                    $tournamentStartTime = new \DateTime($tournamentStartTime['date'], new \DateTimeZone("UTC"));
+                    $tournamentStartTime = new \DateTime($tournamentStartTime['date'], new \DateTimeZone($this->timeZone));
                 }
                 /** @var \DateTime $tournamentDate */
                 $tournamentDate = $nodeData->getParent()->getProperty('date');
                 if (is_array($tournamentDate)) {
-                    $tournamentDate = new \DateTime($tournamentDate['date'], new \DateTimeZone("UTC"));
+                    $tournamentDate = new \DateTime($tournamentDate['date'], new \DateTimeZone($this->timeZone));
                 }
 
                 foreach ($nodeType->getConfiguration('childNodes') as $childNodeKey => $childNode) {
@@ -73,7 +75,7 @@ class AutoCreateNodeService
                             if ($key === 'date' && preg_match('/([0-9]{2}):([0-9]{2})/', $value)) {
                                 list($hours, $minutes) = explode(":", $value);
 
-                                $value = new \DateTime($tournamentDate ? $tournamentDate->format('Y-m-d H:i:00') : 'now', new \DateTimeZone("UTC"));
+                                $value = new \DateTime($tournamentDate ? $tournamentDate->format('Y-m-d H:i:00') : 'now', new \DateTimeZone($this->timeZone));
                                 $value->setTime(intval($hours), intval($minutes), 0);
                                 if ($deltaDateInterval === null && $tournamentStartTime) {
                                     list($tournamentStartTimeHours, $tournamentStartTimeMinutes) = explode(":", $tournamentStartTime->format("H:i"));
@@ -112,7 +114,7 @@ class AutoCreateNodeService
                                     if (preg_match('/([0-9]{2}):([0-9]{2})/', $value)) {
                                         list($hours, $minutes) = explode(":", $value);
                                         $helper = new DateHelper();
-                                        $value = new \DateTime($tournamentDate ? $tournamentDate->format('Y-m-d H:i:00') : 'now', new \DateTimeZone("UTC"));
+                                        $value = new \DateTime($tournamentDate ? $tournamentDate->format('Y-m-d H:i:00') : 'now', new \DateTimeZone($this->timeZone));
                                         $value->setTime(intval($hours), intval($minutes), 0);
 
                                         if ($deltaDateInterval) {
@@ -120,7 +122,7 @@ class AutoCreateNodeService
                                         }
 
                                     } else {
-                                        $value = new \DateTime($value, new \DateTimeZone("UTC"));
+                                        $value = new \DateTime($value, new \DateTimeZone($this->timeZone));
                                     }
 
                                     if ($index === 1 && !$tournamentStartTime) {
