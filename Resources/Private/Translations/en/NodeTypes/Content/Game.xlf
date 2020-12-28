@@ -26,6 +26,9 @@
             <trans-unit id="properties.away" xml:space="preserve">
                 <source>Gast</source>
             </trans-unit>
+            <trans-unit id="properties._hidden" xml:space="preserve">
+                <source>Abgesagt</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

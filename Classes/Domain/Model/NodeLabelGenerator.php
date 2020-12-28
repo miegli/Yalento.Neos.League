@@ -33,7 +33,16 @@ class NodeLabelGenerator implements NodeLabelGeneratorInterface
     public function getLabel(\Neos\ContentRepository\Domain\Projection\Content\NodeInterface $node): string
     {
 
-        if ($node->getNodeType()->getName() === 'Yalento.Neos.League:Document.TableTeam') {
+        if ($node->getNodeType()->isOfType('Yalento.Neos.League:Content.Tournament')) {
+            $name = '(' . explode("round", $node->getNodeName())[1] . ')';
+            if ($node->getProperty('date')) {
+                $dateHelper = new DateHelper();
+                $name .= ' ' . $dateHelper->format($node->getProperty('date'), 'd.m.Y');
+            }
+            return $name;
+        }
+
+        if ($node->getNodeType()->isOfType('Yalento.Neos.League:Document.TableTeam')) {
             $number = explode("team", $node->getNodeName())[1];
 
             if ($node->getProperty('team')) {
@@ -43,7 +52,7 @@ class NodeLabelGenerator implements NodeLabelGeneratorInterface
             return '(' . $number . ')' . ' unknown';
         }
 
-        if ($node->getNodeType()->getName() === 'Yalento.Neos.League:Content.Game') {
+        if ($node->getNodeType()->isOfType('Yalento.Neos.League:Content.Game')) {
 
             $name = '';
 

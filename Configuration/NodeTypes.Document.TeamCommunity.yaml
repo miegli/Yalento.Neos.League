@@ -7,7 +7,7 @@
     group: league
   properties:
     linkedTeam:
-      type: reference
+      type: references
       ui:
         label: i18n
         inspector:

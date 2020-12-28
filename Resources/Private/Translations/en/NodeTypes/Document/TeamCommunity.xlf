@@ -6,7 +6,7 @@
                 <source>Team (Spielgemeinschaft)</source>
             </trans-unit>
             <trans-unit id="properties.linkedTeam" xml:space="preserve">
-                <source>Verbundes Team</source>
+                <source>Verbundene Teams</source>
             </trans-unit>
         </body>
     </file>

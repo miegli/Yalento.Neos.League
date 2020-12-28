@@ -8,6 +8,9 @@
             <trans-unit id="properties.date" xml:space="preserve">
                 <source>Datum</source>
             </trans-unit>
+            <trans-unit id="properties._hidden" xml:space="preserve">
+                <source>Abgesagt</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

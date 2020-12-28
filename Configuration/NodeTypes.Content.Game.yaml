@@ -49,3 +49,8 @@
           editorOptions:
             threshold: 1
             nodeTypes: [ 'Yalento.Neos.League:Document.TableTeam' ]
+    _hidden:
+      ui:
+        label: i18n
+        inspector:
+          group: 'league'

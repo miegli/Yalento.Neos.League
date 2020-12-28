@@ -3,8 +3,8 @@
     <file original="" product-name="Yalento.Neos.League" source-language="en" datatype="plaintext">
         <body>
             <trans-unit id="nodeTypes.groups.league" xml:space="preserve">
-                <source>Liga</source>
-                <target state="needs-translation">Liga</target>
+                <source>Allgemein</source>
+                <target state="needs-translation">Allgemein</target>
             </trans-unit>
             <trans-unit id="nodeTypes.groups.table1" xml:space="preserve">
                 <source>Einfache Runde (Tabelle / Teams)</source>
