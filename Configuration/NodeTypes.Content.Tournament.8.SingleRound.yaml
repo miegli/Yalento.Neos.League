@@ -1,4 +1,4 @@
-'Yalento.Neos.League:Content.Tournament.2.8.1':
+'Yalento.Neos.League:Content.Tournament.8.SingleRound.1':
   superTypes:
     'Yalento.Neos.League:Content.Tournament': true
   childNodes:
@@ -63,22 +63,22 @@
         away: team8
         date: 17:15
 
-'Yalento.Neos.League:Content.Tournament.2.8.2':
+'Yalento.Neos.League:Content.Tournament.8.SingleRound.2':
   superTypes:
     'Yalento.Neos.League:Content.Tournament': true
 
-'Yalento.Neos.League:Content.Tournament.2.8.3':
+'Yalento.Neos.League:Content.Tournament.8.SingleRound.3':
   superTypes:
     'Yalento.Neos.League:Content.Tournament': true
 
-'Yalento.Neos.League:Content.Tournament.2.8.4':
+'Yalento.Neos.League:Content.Tournament.8.SingleRound.4':
   superTypes:
     'Yalento.Neos.League:Content.Tournament': true
 
-'Yalento.Neos.League:Content.Tournament.2.8.5':
+'Yalento.Neos.League:Content.Tournament.8.SingleRound.5':
   superTypes:
     'Yalento.Neos.League:Content.Tournament': true
 
-'Yalento.Neos.League:Content.Tournament.2.8.6':
+'Yalento.Neos.League:Content.Tournament.8.SingleRound.6':
   superTypes:
     'Yalento.Neos.League:Content.Tournament': true

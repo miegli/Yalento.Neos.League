@@ -1,53 +1,9 @@
-prototype(Yalento.Neos.League:Document.Table.1) < prototype(Yalento.Neos.League:Document.Page) {
+prototype(Yalento.Neos.League:Document.Table) < prototype(Yalento.Neos.League:Document.Page) {
 
     body = ''
 
 }
 
-prototype(Yalento.Neos.League:Document.Table.2) < prototype(Yalento.Neos.League:Document.Page) {
-
-    body = ''
+prototype(Yalento.Neos.League:Document.Table.8) < prototype(Yalento.Neos.League:Document.Table) {
 
 }
-
-prototype(Yalento.Neos.League:Document.Table.1.10) < prototype(Yalento.Neos.League:Document.Table.1) {
-
-}
-
-prototype(Yalento.Neos.League:Document.Table.1.9) < prototype(Yalento.Neos.League:Document.Table.1) {
-
-}
-
-prototype(Yalento.Neos.League:Document.Table.1.8) < prototype(Yalento.Neos.League:Document.Table.1) {
-
-}
-
-prototype(Yalento.Neos.League:Document.Table.1.7) < prototype(Yalento.Neos.League:Document.Table.1) {
-
-}
-
-prototype(Yalento.Neos.League:Document.Table.1.6) < prototype(Yalento.Neos.League:Document.Table.1) {
-
-}
-
-
-prototype(Yalento.Neos.League:Document.Table.2.10) < prototype(Yalento.Neos.League:Document.Table.2) {
-
-}
-
-prototype(Yalento.Neos.League:Document.Table.2.9) < prototype(Yalento.Neos.League:Document.Table.2) {
-
-}
-
-prototype(Yalento.Neos.League:Document.Table.2.8) < prototype(Yalento.Neos.League:Document.Table.2) {
-
-}
-
-prototype(Yalento.Neos.League:Document.Table.2.7) < prototype(Yalento.Neos.League:Document.Table.2) {
-
-}
-
-prototype(Yalento.Neos.League:Document.Table.2.6) < prototype(Yalento.Neos.League:Document.Table.2) {
-
-}
-

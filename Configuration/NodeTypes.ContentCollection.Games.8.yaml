@@ -1,0 +1,11 @@
+'Yalento.Neos.League:ContentCollection.Games.8':
+  superTypes:
+    'Yalento.Neos.League:ContentCollection.Games': true
+  constraints:
+    nodeTypes:
+      'Yalento.Neos.League:Content.Tournaments.8.SingleRound': true
+      'Yalento.Neos.League:Content.Tournaments.8.DoubleRound': true
+      'Yalento.Neos.League:Content.TournamentsSingleGame.8.SingleRound': true
+      'Yalento.Neos.League:Content.TournamentsSingleGame.8.DoubleRound': true
+      'Yalento.Neos.League:Content.SingleGames.8.SingleRound': true
+      'Yalento.Neos.League:Content.SingleGames.8.DoubleRound': true

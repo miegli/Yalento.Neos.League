@@ -1,8 +1,0 @@
-'Yalento.Neos.League:ContentCollection.Games.2.8':
-  superTypes:
-    'Yalento.Neos.League:ContentCollection.Games': true
-  constraints:
-    nodeTypes:
-      'Yalento.Neos.League:Content.Tournaments.2.8': true
-      'Yalento.Neos.League:Content.SingleGames.2.8': true
-      'Yalento.Neos.League:Content.TournamentsSingleGame.2.8': true

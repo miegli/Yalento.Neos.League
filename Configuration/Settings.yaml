@@ -67,21 +67,25 @@ Neos:
         league:
           position: 1
           label: 'Yalento.Neos.League:Main:nodeTypes.groups.league'
-        table1:
+        table:
           position: 2
-          label: 'Yalento.Neos.League:Main:nodeTypes.groups.table1'
-          collapsed: true
-        table2:
-          position: 3
-          label: 'Yalento.Neos.League:Main:nodeTypes.groups.table2'
-          collapsed: true
+          label: 'Yalento.Neos.League:Main:nodeTypes.groups.table'
+          collapsed: false
         singleGame:
-          position: 4
+          position: 3
           label: 'Yalento.Neos.League:Main:nodeTypes.groups.singleGame'
           collapsed: false
         seriesOfGames:
-          position: 5
+          position: 4
           label: 'Yalento.Neos.League:Main:nodeTypes.groups.seriesOfGames'
+          collapsed: false
+        singleRound:
+          position: 5
+          label: 'Yalento.Neos.League:Main:nodeTypes.groups.singleRound'
+          collapsed: false
+        doubleRound:
+          position: 6
+          label: 'Yalento.Neos.League:Main:nodeTypes.groups.doubleRound'
           collapsed: false
   Fusion:
     defaultContext:

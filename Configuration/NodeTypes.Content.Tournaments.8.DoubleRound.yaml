@@ -1,0 +1,28 @@
+'Yalento.Neos.League:Content.Tournaments.8.DoubleRound':
+  superTypes:
+    'Yalento.Neos.League:Content.Tournaments.DoubleRound': true
+  childNodes:
+    round1:
+      type: 'Yalento.Neos.League:Content.Tournament.8.DoubleRound.1'
+      defaultValue:
+        title: Runde $index
+    round2:
+      type: 'Yalento.Neos.League:Content.Tournament.8.DoubleRound.2'
+      defaultValue:
+        title: Runde $index
+    round3:
+      type: 'Yalento.Neos.League:Content.Tournament.8.DoubleRound.3'
+      defaultValue:
+        title: Runde $index
+    round4:
+      type: 'Yalento.Neos.League:Content.Tournament.8.DoubleRound.4'
+      defaultValue:
+        title: Runde $index
+    round5:
+      type: 'Yalento.Neos.League:Content.Tournament.8.DoubleRound.5'
+      defaultValue:
+        title: Runde $index
+    round6:
+      type: 'Yalento.Neos.League:Content.Tournament.8.DoubleRound.6'
+      defaultValue:
+        title: Runde $index

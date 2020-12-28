@@ -24,19 +24,21 @@ class NodeDataAspect
 
 
     /**
-     * NodesController indexAction
+     * createSingleNode around
      *
      * @Flow\Around("method(Neos\ContentRepository\Domain\Model\NodeData->createSingleNodeData())")
      * @param JoinPointInterface $joinPoint
      */
-    public function createSingleNode(JoinPointInterface $joinPoint)
+    public function createSingleNodeAround(JoinPointInterface $joinPoint)
     {
 
         /** @var NodeData $nodeData */
         $nodeData = $joinPoint->getAdviceChain()->proceed($joinPoint);
         $this->autoCreateNodeService->createFromChildNodeDefaultValues($nodeData);
+
         return $nodeData;
     }
+
 
     /**
      * NodesController indexAction

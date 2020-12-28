@@ -34,6 +34,16 @@ class NodeLabelGenerator implements NodeLabelGeneratorInterface
     {
 
         if ($node->getNodeType()->isOfType('Yalento.Neos.League:Content.Tournament')) {
+
+            if ($node->getProperty('title')) {
+                $name = $node->getProperty('title');
+                if ($node->getProperty('date')) {
+                    $dateHelper = new DateHelper();
+                    $name .= ' (' . $dateHelper->format($node->getProperty('date'), 'd.m.Y') . ')';
+                }
+                return $name;
+            }
+
             $name = '(' . explode("round", $node->getNodeName())[1] . ')';
             if ($node->getProperty('date')) {
                 $dateHelper = new DateHelper();
@@ -59,6 +69,10 @@ class NodeLabelGenerator implements NodeLabelGeneratorInterface
             if ($node->getProperty('date')) {
                 $dateHelper = new DateHelper();
                 $name .= ' ⏰ ' . $dateHelper->format($node->getProperty('date'), 'H:i');
+            }
+
+            if ($node->getProperty('title')) {
+                $name .= ' ' . $node->getProperty('title');
             }
 
             if ($node->getProperty('home')) {

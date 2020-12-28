@@ -9,7 +9,10 @@
                 <source>Datum</source>
             </trans-unit>
             <trans-unit id="properties._hidden" xml:space="preserve">
-                <source>Abgesagt</source>
+                <source>Turnier abgesagt</source>
+            </trans-unit>
+            <trans-unit id="properties.title" xml:space="preserve">
+                <source>Bezeichnung</source>
             </trans-unit>
         </body>
     </file>

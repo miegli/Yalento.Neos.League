@@ -27,7 +27,10 @@
                 <source>Gast</source>
             </trans-unit>
             <trans-unit id="properties._hidden" xml:space="preserve">
-                <source>Abgesagt</source>
+                <source>Spiel abgesagt</source>
+            </trans-unit>
+            <trans-unit id="properties.title" xml:space="preserve">
+                <source>Bezeichnung</source>
             </trans-unit>
         </body>
     </file>

@@ -5,6 +5,12 @@
             <trans-unit id="ui.label" xml:space="preserve">
                 <source>Turniere</source>
             </trans-unit>
+            <trans-unit id="properties._hidden" xml:space="preserve">
+                <source>Alle Turniere abgesagt</source>
+            </trans-unit>
+            <trans-unit id="properties.title" xml:space="preserve">
+                <source>Bezeichnung</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

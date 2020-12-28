@@ -6,13 +6,9 @@
                 <source>Allgemein</source>
                 <target state="needs-translation">Allgemein</target>
             </trans-unit>
-            <trans-unit id="nodeTypes.groups.table1" xml:space="preserve">
-                <source>Einfache Runde (Tabelle / Teams)</source>
-                <target state="needs-translation">Einfache Runde (Tabelle / Teams)</target>
-            </trans-unit>
-            <trans-unit id="nodeTypes.groups.table2" xml:space="preserve">
-                <source>Hin-/Rückrunde (Tabelle / Teams)</source>
-                <target state="needs-translation">Hin-/Rückrunde (Tabelle / Teams)</target>
+            <trans-unit id="nodeTypes.groups.table" xml:space="preserve">
+                <source>Tabelle / Teams</source>
+                <target state="needs-translation">Tabelle / Teams</target>
             </trans-unit>
             <trans-unit id="nodeTypes.groups.singleGame" xml:space="preserve">
                 <source>Einzelnes Spiel (manuell)</source>
@@ -21,6 +17,14 @@
             <trans-unit id="nodeTypes.groups.seriesOfGames" xml:space="preserve">
                 <source>Spiele-Serie (automatisch)</source>
                 <target state="needs-translation">Spiele-Serie (automatisch)</target>
+            </trans-unit>
+            <trans-unit id="nodeTypes.groups.singleRound" xml:space="preserve">
+                <source>Einfache Runde</source>
+                <target state="needs-translation">Einfache Runde</target>
+            </trans-unit>
+            <trans-unit id="nodeTypes.groups.doubleRound" xml:space="preserve">
+                <source>Doppelte Runde</source>
+                <target state="needs-translation">Doppelte Runde</target>
             </trans-unit>
         </body>
     </file>

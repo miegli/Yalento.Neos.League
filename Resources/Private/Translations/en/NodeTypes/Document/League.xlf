@@ -5,6 +5,49 @@
             <trans-unit id="ui.label" xml:space="preserve">
                 <source>Liga</source>
             </trans-unit>
+            <trans-unit id="creationDialog.autogenerate" xml:space="preserve">
+                <source>Automatisch generieren</source>
+            </trans-unit>
+            <trans-unit id="creationDialog.autogenerate.selectBoxEditor.values.tournamentsSingleRound" xml:space="preserve">
+                <source>Turniere (einfache Runde)</source>
+            </trans-unit>
+            <trans-unit id="creationDialog.autogenerate.selectBoxEditor.values.tournamentsDoubleRound" xml:space="preserve">
+                <source>Turniere (doppelte Runde)</source>
+            </trans-unit>
+            <trans-unit id="creationDialog.autogenerate.selectBoxEditor.values.tournamentsSingleGameSingleRound" xml:space="preserve">
+                <source>Einzelspiele Turnierform (einfache Runde)</source>
+            </trans-unit>
+            <trans-unit id="creationDialog.autogenerate.selectBoxEditor.values.tournamentsSingleGameDoubleRound" xml:space="preserve">
+                <source>Einzelspiele Turnierform (doppelte Runde)</source>
+            </trans-unit>
+            <trans-unit id="creationDialog.autogenerate.selectBoxEditor.values.singleGamesSingleRound" xml:space="preserve">
+                <source>Einzelspiele (einfache Runde)</source>
+            </trans-unit>
+            <trans-unit id="creationDialog.autogenerate.selectBoxEditor.values.singleGamesDoubleRound" xml:space="preserve">
+                <source>Einzelspiele (doppelte Runde)</source>
+            </trans-unit>
+
+            <trans-unit id="properties.autogenerate" xml:space="preserve">
+                <source>Automatisch generieren</source>
+            </trans-unit>
+            <trans-unit id="properties.autogenerate.selectBoxEditor.values.tournamentsSingleRound" xml:space="preserve">
+                <source>Turniere (einfache Runde)</source>
+            </trans-unit>
+            <trans-unit id="properties.autogenerate.selectBoxEditor.values.tournamentsDoubleRound" xml:space="preserve">
+                <source>Turniere (doppelte Runde)</source>
+            </trans-unit>
+            <trans-unit id="properties.autogenerate.selectBoxEditor.values.tournamentsSingleGameSingleRound" xml:space="preserve">
+                <source>Einzelspiele Turnierform (einfache Runde)</source>
+            </trans-unit>
+            <trans-unit id="properties.autogenerate.selectBoxEditor.values.tournamentsSingleGameDoubleRound" xml:space="preserve">
+                <source>Einzelspiele Turnierform (doppelte Runde)</source>
+            </trans-unit>
+            <trans-unit id="properties.autogenerate.selectBoxEditor.values.singleGamesSingleRound" xml:space="preserve">
+                <source>Einzelspiele (einfache Runde)</source>
+            </trans-unit>
+            <trans-unit id="properties.autogenerate.selectBoxEditor.values.singleGamesDoubleRound" xml:space="preserve">
+                <source>Einzelspiele (doppelte Runde)</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

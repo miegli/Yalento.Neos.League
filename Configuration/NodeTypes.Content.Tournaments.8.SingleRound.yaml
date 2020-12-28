@@ -1,0 +1,16 @@
+'Yalento.Neos.League:Content.Tournaments.8.SingleRound':
+  superTypes:
+    'Yalento.Neos.League:Content.Tournaments.SingleRound': true
+  childNodes:
+    round1:
+      type: 'Yalento.Neos.League:Content.Tournament.8.SingleRound.1'
+    round2:
+      type: 'Yalento.Neos.League:Content.Tournament.8.SingleRound.2'
+    round3:
+      type: 'Yalento.Neos.League:Content.Tournament.8.SingleRound.3'
+    round4:
+      type: 'Yalento.Neos.League:Content.Tournament.8.SingleRound.4'
+    round5:
+      type: 'Yalento.Neos.League:Content.Tournament.8.SingleRound.5'
+    round6:
+      type: 'Yalento.Neos.League:Content.Tournament.8.SingleRound.6'

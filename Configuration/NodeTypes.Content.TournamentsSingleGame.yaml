@@ -7,3 +7,17 @@
     icon: 'calendar-week'
     group: seriesOfGames
     position: 3
+
+'Yalento.Neos.League:Content.TournamentsSingleGame.SingleRound':
+  abstract: true
+  superTypes:
+    'Yalento.Neos.League:Content.TournamentsSingleGame': true
+  ui:
+    group: singleRound
+
+'Yalento.Neos.League:Content.TournamentsSingleGame.DoubleRound':
+  abstract: true
+  superTypes:
+    'Yalento.Neos.League:Content.TournamentsSingleGame': true
+  ui:
+    group: doubleRound
