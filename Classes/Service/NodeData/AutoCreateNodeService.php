@@ -103,10 +103,6 @@ class AutoCreateNodeService
                                         $value = new \DateTime($tournamentDate ? $tournamentDate->format('Y-m-d H:i:00') : 'now', new \DateTimeZone("UTC"));
                                         $value->setTime(intval($hours), intval($minutes), 0);
 
-                                        if ($index === 1 && $tournamentStartTime) {
-                                            $tournamentStartTime->setDate(intval($tournamentDate->format('Y')), intval($tournamentDate->format('m')), intval($tournamentDate->format('d')));
-                                            $deltaDateInterval = $helper->diff($value, $tournamentStartTime);
-                                        }
                                         if ($deltaDateInterval) {
                                             $value = $helper->add($value, $deltaDateInterval);
                                         }

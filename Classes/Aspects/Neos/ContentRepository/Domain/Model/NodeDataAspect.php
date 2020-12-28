@@ -62,7 +62,9 @@ class NodeDataAspect
             $this->postProcessUpdateTournamentStartTime($node, $value);
         }
 
-        if ($node->getNodeType()->isOfType('Yalento.Neos.League:Content.Game')) {
+        if ($node->getNodeType()->isOfType('Yalento.Neos.League:Content.Game') &&
+            ($propertyName === 'date' || $propertyName === 'home' || $propertyName === 'away' || $propertyName === 'place')
+        ) {
             $this->postProcessUpdateGame($node, $value);
         }
 
@@ -79,23 +81,24 @@ class NodeDataAspect
      */
     private function postProcessUpdateGame(Node $node, $value)
     {
+
         if (!$value) {
             /**
              * reset auto-generated data
              */
             $this->autoCreateNodeService->createTournamentGamesFromChildNodeDefaultValues($node->getNodeData());
-        }
 
-        /**
-         * reset date from tournament
-         */
-        /** @var \DateTime $tournamentDate */
-        $tournamentDate = $node->findParentNode()->getProperty('date');
-        if ($tournamentDate) {
-            /** @var \DateTime $gameDate */
-            $gameDate = $node->getProperty('date');
-            $gameDate->setDate(intval($tournamentDate->format('Y')), intval($tournamentDate->format('m')), intval($tournamentDate->format('d')));
-            $node->setProperty('date', $gameDate);
+            /**
+             * reset date from tournament
+             */
+            /** @var \DateTime $tournamentDate */
+            $tournamentDate = $node->findParentNode()->getProperty('date');
+            if ($tournamentDate) {
+                /** @var \DateTime $gameDate */
+                $gameDate = $node->getProperty('date');
+                $gameDate->setDate(intval($tournamentDate->format('Y')), intval($tournamentDate->format('m')), intval($tournamentDate->format('d')));
+                $node->setProperty('date', $gameDate);
+            }
         }
     }
 
@@ -136,10 +139,15 @@ class NodeDataAspect
      */
     private function postProcessUpdateTournamentStartTime(Node $node, $value)
     {
-        /** @var \DateTime $tournamentStartTime */
-        $tournamentStartTime = $value;
+
+        if (!$node->getProperty('date') || !$value) {
+            return;
+        }
+
         /** @var \DateTime $tournamentDate */
-        $tournamentDate = $node->getProperty('date');
+        $tournamentDate = new \DateTime($node->getProperty('date')->format('Y-m-d 00:00:00'), new \DateTimeZone("UTC"));;
+        /** @var \DateTime $tournamentStartTime */
+        $tournamentStartTime = new \DateTime($tournamentDate->format('Y-m-d') . ' ' . $value->format('H:i:00'), new \DateTimeZone("UTC"));
         $helper = new DateHelper();
 
         if (!$node->getProperty('date')) {
@@ -161,20 +169,19 @@ class NodeDataAspect
                         list($hours, $minutes) = explode(":", $defaultValueProperties['date']);
 
                         /** @var \DateTime $gameDate */
-                        $gameDate = $childNode->getProperty('date');
-                        $gameDate->setDate(intval($tournamentDate->format('Y')), intval($tournamentDate->format('m')), intval($tournamentDate->format('d')));
-                        $gameDate->setTime(intval($hours), intval($minutes), 0);
+                        $gameDate = new \DateTime($tournamentDate->format("Y-m-d $hours:$minutes:00"), new \DateTimeZone("UTC"));
 
                         if ($deltaDateInterval === null && $tournamentStartTime) {
                             $tournamentStartTime->setDate(intval($tournamentDate->format('Y')), intval($tournamentDate->format('m')), intval($tournamentDate->format('d')));
-                            $deltaDateInterval = $helper->diff($gameDate, $tournamentStartTime);
+                            $deltaDateInterval = $helper->diff($tournamentStartTime, $gameDate);
                         }
 
                         if ($deltaDateInterval) {
-                            $childNode->setProperty('date', $helper->add($gameDate, $deltaDateInterval));
-                        } else {
-                            $childNode->setProperty('date', $gameDate);
+                            $gameDate = $helper->add($gameDate, $deltaDateInterval);
                         }
+
+                        $childNode->setProperty('date', $gameDate);
+
 
                     }
 

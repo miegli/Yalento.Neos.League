@@ -29,6 +29,7 @@
             format: 'd.m.Y'
     startTime:
       type: DateTime
+      defaultValue: '2020-05-05 00:00:00'
       ui:
         label: i18n
         reloadIfChanged: true
