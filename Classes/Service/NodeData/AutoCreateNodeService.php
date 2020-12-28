@@ -72,13 +72,25 @@ class AutoCreateNodeService
                         foreach ($childNodeDefaultProperties as $key => $value) {
                             if ($key === 'date' && preg_match('/([0-9]{2}):([0-9]{2})/', $value)) {
                                 list($hours, $minutes) = explode(":", $value);
-                                $helper = new DateHelper();
+
                                 $value = new \DateTime($tournamentDate ? $tournamentDate->format('Y-m-d H:i:00') : 'now', new \DateTimeZone("UTC"));
                                 $value->setTime(intval($hours), intval($minutes), 0);
                                 if ($deltaDateInterval === null && $tournamentStartTime) {
-                                    $tournamentStartTime->setDate(intval($tournamentDate->format('Y')), intval($tournamentDate->format('m')), intval($tournamentDate->format('d')));
-                                    $deltaDateInterval = $helper->diff($value, $tournamentStartTime);
+                                    list($tournamentStartTimeHours, $tournamentStartTimeMinutes) = explode(":", $tournamentStartTime->format("H:i"));
+                                    $tournamentStartTimeHours = intval($tournamentStartTimeHours);
+                                    $tournamentStartTimeMinutes = intval($tournamentStartTimeMinutes);
+                                    $defaultGameStartTimeHours = intval($hours);
+                                    $defaultGameStartTimeMinutes = intval($minutes);
+                                    $minutes1 = ($tournamentStartTimeHours * 60.0 + $tournamentStartTimeMinutes);
+                                    $minutes2 = ($defaultGameStartTimeHours * 60.0 + $defaultGameStartTimeMinutes);
+                                    $diff = $minutes1 - $minutes2;
+                                    $deltaDateInterval = new \DateInterval('PT' . abs($diff) . 'M');
+                                    if ($diff < 0) {
+                                        $deltaDateInterval->invert = 1;
+                                    }
                                 }
+
+
                             }
                         }
                     }

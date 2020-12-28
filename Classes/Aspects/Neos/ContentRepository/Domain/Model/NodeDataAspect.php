@@ -168,12 +168,21 @@ class NodeDataAspect
                     if (isset($defaultValueProperties['date']) && preg_match('/([0-9]{2}):([0-9]{2})/', $defaultValueProperties['date'])) {
                         list($hours, $minutes) = explode(":", $defaultValueProperties['date']);
 
-                        /** @var \DateTime $gameDate */
                         $gameDate = new \DateTime($tournamentDate->format("Y-m-d $hours:$minutes:00"), new \DateTimeZone("UTC"));
 
                         if ($deltaDateInterval === null && $tournamentStartTime) {
-                            $tournamentStartTime->setDate(intval($tournamentDate->format('Y')), intval($tournamentDate->format('m')), intval($tournamentDate->format('d')));
-                            $deltaDateInterval = $helper->diff($tournamentStartTime, $gameDate);
+                            list($tournamentStartTimeHours, $tournamentStartTimeMinutes) = explode(":", $tournamentStartTime->format("H:i"));
+                            $tournamentStartTimeHours = intval($tournamentStartTimeHours);
+                            $tournamentStartTimeMinutes = intval($tournamentStartTimeMinutes);
+                            $defaultGameStartTimeHours = intval($hours);
+                            $defaultGameStartTimeMinutes = intval($minutes);
+                            $minutes1 = ($tournamentStartTimeHours * 60.0 + $tournamentStartTimeMinutes);
+                            $minutes2 = ($defaultGameStartTimeHours * 60.0 + $defaultGameStartTimeMinutes);
+                            $diff = $minutes1 - $minutes2;
+                            $deltaDateInterval = new \DateInterval('PT' . abs($diff) . 'M');
+                            if ($diff < 0) {
+                                $deltaDateInterval->invert = 1;
+                            }
                         }
 
                         if ($deltaDateInterval) {
