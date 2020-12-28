@@ -10,8 +10,7 @@
   constraints:
     nodeTypes:
       'Yalento.Neos.League:Document.Group': false
-      'Yalento.Neos.League:Document.Table.1': true
-      'Yalento.Neos.League:Document.Table.2': true
+      'Yalento.Neos.League:Document.Table': true
       'Yalento.Neos.League:Document.Playoffs': true
       'Yalento.Neos.League:Document.Chessboard': true
       'Yalento.Neos.League:Document.SingleGame': true

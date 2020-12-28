@@ -27,8 +27,7 @@
       'Yalento.Neos.League:Document.League': false
       'Yalento.Neos.League:Document.LeagueFolder': false
       'Yalento.Neos.League:Document.Group': false
-      'Yalento.Neos.League:Document.Table.1': false
-      'Yalento.Neos.League:Document.Table.2': false
+      'Yalento.Neos.League:Document.Table': false
       'Yalento.Neos.League:Document.TableTeam': false
       'Yalento.Neos.League:Document.Playoffs': false
       'Yalento.Neos.League:Document.Chessboard': false

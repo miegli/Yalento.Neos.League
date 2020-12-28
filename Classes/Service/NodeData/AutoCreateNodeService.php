@@ -96,18 +96,23 @@ class AutoCreateNodeService
     public function createFromAutogenerateProperty(TraversableNodeInterface $node)
     {
 
-        $autogenerateProperty = $node->getProperty('autogenerate');
-
-        if (!$autogenerateProperty) {
-            $autogenerateProperty = $node->findParentNode()->getProperty('autogenerate');
-        }
-
-
-        if (!$autogenerateProperty) {
-            return;
-        }
-
         if ($node->getNodeType()->isOfType('Yalento.Neos.League:Document.Table')) {
+            $autogenerateProperty = $node->getProperty('autogenerate');
+            if (!$autogenerateProperty) {
+                $autogenerateProperty = $node->findParentNode()->getProperty('autogenerate');
+            }
+
+            if (!$autogenerateProperty) {
+                $autogenerateProperty = $node->findParentNode()->findParentNode()->getProperty('autogenerate');
+            }
+
+            if (!$autogenerateProperty) {
+                $autogenerateProperty = $node->findParentNode()->findParentNode()->findParentNode()->getProperty('autogenerate');
+            }
+
+            if (!$autogenerateProperty) {
+                return;
+            }
 
             $flowQuery = new FlowQuery(array($node));
             $baseNode = $flowQuery->find('[instanceof Yalento.Neos.League:ContentCollection.Games]')->get(0);
