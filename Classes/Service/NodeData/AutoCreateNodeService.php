@@ -20,7 +20,7 @@ use Neos\Neos\Service\NodeOperations;
  */
 class AutoCreateNodeService
 {
-    
+
     private $timeZone = 'Europe/Zurich';
 
     /**
@@ -57,12 +57,14 @@ class AutoCreateNodeService
                 /** @var \DateTime $tournamentStartTime */
                 $tournamentStartTime = $nodeData->getParent()->getProperty('startTime');
                 if (is_array($tournamentStartTime)) {
-                    $tournamentStartTime = new \DateTime($tournamentStartTime['date'], new \DateTimeZone($this->timeZone));
+                    $tournamentStartTime = new \DateTime($tournamentStartTime['date'], new \DateTimeZone('UTC'));
+                    $tournamentStartTime->setTimezone(new \DateTimeZone($this->timeZone));
                 }
                 /** @var \DateTime $tournamentDate */
                 $tournamentDate = $nodeData->getParent()->getProperty('date');
                 if (is_array($tournamentDate)) {
-                    $tournamentDate = new \DateTime($tournamentDate['date'], new \DateTimeZone($this->timeZone));
+                    $tournamentDate = new \DateTime($tournamentDate['date'], new \DateTimeZone('UTC'));
+                    $tournamentDate->setTimezone(new \DateTimeZone($this->timeZone));
                 }
 
                 foreach ($nodeType->getConfiguration('childNodes') as $childNodeKey => $childNode) {
@@ -75,7 +77,12 @@ class AutoCreateNodeService
                             if ($key === 'date' && preg_match('/([0-9]{2}):([0-9]{2})/', $value)) {
                                 list($hours, $minutes) = explode(":", $value);
 
-                                $value = new \DateTime($tournamentDate ? $tournamentDate->format('Y-m-d H:i:00') : 'now', new \DateTimeZone($this->timeZone));
+                                if ($tournamentDate) {
+                                    $value = new \DateTime($tournamentDate->format('Y-m-d H:i:00'), new \DateTimeZone($this->timeZone));
+                                } else {
+                                    $value = new \DateTime('now', new \DateTimeZone('UTC'));
+                                }
+
                                 $value->setTime(intval($hours), intval($minutes), 0);
                                 if ($deltaDateInterval === null && $tournamentStartTime) {
                                     list($tournamentStartTimeHours, $tournamentStartTimeMinutes) = explode(":", $tournamentStartTime->format("H:i"));
@@ -90,6 +97,7 @@ class AutoCreateNodeService
                                     if ($diff < 0) {
                                         $deltaDateInterval->invert = 1;
                                     }
+
                                 }
 
 
@@ -114,7 +122,13 @@ class AutoCreateNodeService
                                     if (preg_match('/([0-9]{2}):([0-9]{2})/', $value)) {
                                         list($hours, $minutes) = explode(":", $value);
                                         $helper = new DateHelper();
-                                        $value = new \DateTime($tournamentDate ? $tournamentDate->format('Y-m-d H:i:00') : 'now', new \DateTimeZone($this->timeZone));
+
+                                        if ($tournamentDate) {
+                                            $value = new \DateTime($tournamentDate->format('Y-m-d H:i:00'), new \DateTimeZone($this->timeZone));
+                                        } else {
+                                            $value = new \DateTime('now', new \DateTimeZone('UTC'));
+                                        }
+
                                         $value->setTime(intval($hours), intval($minutes), 0);
 
                                         if ($deltaDateInterval) {
@@ -126,6 +140,7 @@ class AutoCreateNodeService
                                     }
 
                                     if ($index === 1 && !$tournamentStartTime) {
+                                        $value->setTimezone(new \DateTimeZone('UTC'));
                                         $nodeData->getParent()->setProperty('startTime', $value);
                                     }
 

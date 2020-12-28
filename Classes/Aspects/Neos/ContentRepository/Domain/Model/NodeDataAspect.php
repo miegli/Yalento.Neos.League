@@ -84,22 +84,12 @@ class NodeDataAspect
     {
 
         if (!$value) {
+
             /**
              * reset auto-generated data
              */
             $this->autoCreateNodeService->createTournamentGamesFromChildNodeDefaultValues($node->getNodeData());
 
-            /**
-             * reset date from tournament
-             */
-            /** @var \DateTime $tournamentDate */
-            $tournamentDate = $node->findParentNode()->getProperty('date');
-            if ($tournamentDate) {
-                /** @var \DateTime $gameDate */
-                $gameDate = $node->getProperty('date');
-                $gameDate->setDate(intval($tournamentDate->format('Y')), intval($tournamentDate->format('m')), intval($tournamentDate->format('d')));
-                $node->setProperty('date', $gameDate);
-            }
         }
     }
 
@@ -115,6 +105,7 @@ class NodeDataAspect
     {
         /** @var \DateTime $tournamentDate */
         $tournamentDate = $value;
+
 
         if (!$tournamentDate) {
             return;
@@ -169,7 +160,7 @@ class NodeDataAspect
                     if (isset($defaultValueProperties['date']) && preg_match('/([0-9]{2}):([0-9]{2})/', $defaultValueProperties['date'])) {
                         list($hours, $minutes) = explode(":", $defaultValueProperties['date']);
 
-                        $gameDate = new \DateTime($tournamentDate->format("Y-m-d $hours:$minutes:00"), new \DateTimeZone($this->timeZone));
+                        $gameDate = new \DateTime($tournamentDate->format("Y-m-d $hours:$minutes:00"), new \DateTimeZone('UTC'));
 
                         if ($deltaDateInterval === null && $tournamentStartTime) {
                             list($tournamentStartTimeHours, $tournamentStartTimeMinutes) = explode(":", $tournamentStartTime->format("H:i"));
