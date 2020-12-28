@@ -55,12 +55,12 @@ class AutoCreateNodeService
                 /** @var \DateTime $tournamentStartTime */
                 $tournamentStartTime = $nodeData->getParent()->getProperty('startTime');
                 if (is_array($tournamentStartTime)) {
-                    $tournamentStartTime = new \DateTime($tournamentStartTime['date']);
+                    $tournamentStartTime = new \DateTime($tournamentStartTime['date'], new \DateTimeZone("UTC"));
                 }
                 /** @var \DateTime $tournamentDate */
                 $tournamentDate = $nodeData->getParent()->getProperty('date');
                 if (is_array($tournamentDate)) {
-                    $tournamentDate = new \DateTime($tournamentDate['date']);
+                    $tournamentDate = new \DateTime($tournamentDate['date'], new \DateTimeZone("UTC"));
                 }
 
                 foreach ($nodeType->getConfiguration('childNodes') as $childNodeKey => $childNode) {
