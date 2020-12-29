@@ -1,32 +1,48 @@
 import {Injectable} from '@angular/core';
+import {Configuration} from "./models/Configuration";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConfigurationService {
 
-  firebaseConfiguration = {
-    apiKey: '__FIREBASE_CONFIGURATION__apiKey__',
-    authDomain: '__FIREBASE_CONFIGURATION__apiKey__',
-    databaseURL: '__FIREBASE_CONFIGURATION__apiKey__',
-    projectId: '__FIREBASE_CONFIGURATION__apiKey__',
-    storageBucket: '__FIREBASE_CONFIGURATION__apiKey__',
-    messagingSenderId: '__FIREBASE_CONFIGURATION__apiKey__',
-    appId: '__FIREBASE_CONFIGURATION__apiKey__',
-    measurementId: '__FIREBASE_CONFIGURATION__apiKey__'
+  private configuration: Configuration = {
+    firebaseConfiguration: {
+      apiKey: '__FIREBASE_CONFIGURATION__apiKey__',
+      authDomain: '__FIREBASE_CONFIGURATION__apiKey__',
+      databaseURL: '__FIREBASE_CONFIGURATION__apiKey__',
+      projectId: '__FIREBASE_CONFIGURATION__apiKey__',
+      storageBucket: '__FIREBASE_CONFIGURATION__apiKey__',
+      messagingSenderId: '__FIREBASE_CONFIGURATION__apiKey__',
+      appId: '__FIREBASE_CONFIGURATION__apiKey__',
+      measurementId: '__FIREBASE_CONFIGURATION__apiKey__'
+    },
+    restApiBaseUrl: null
   }
+
 
   constructor() {
     this.loadConfiguration();
   }
 
+  public getConfiguration(): Configuration {
+    return this.configuration;
+  }
+
   private loadConfiguration() {
 
+
     if (window['yalento'] && window['yalento']['firebaseConfiguration']) {
-      this.firebaseConfiguration = window['yalento']['firebaseConfiguration'];
-      return;
+      this.configuration.firebaseConfiguration = window['yalento']['firebaseConfiguration'];
     }
 
+    try {
+      this.configuration.restApiBaseUrl = (document.getRootNode() as any).getElementsByTagName('body')[0].getAttribute('data-yalento-neos-league-base-url');
+    } catch (e) {
+
+    }
+
+    console.log(window, this.configuration);
   }
 
 }

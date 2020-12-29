@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
-import { ObserversModule } from '@angular/cdk/observers';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from '../app-routing.module';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import {NgModule} from '@angular/core';
+import {ObserversModule} from '@angular/cdk/observers';
+import {BrowserModule} from '@angular/platform-browser';
+import {AppRoutingModule} from '../app-routing.module';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { FormsModule } from '@angular/forms';
     ObserversModule,
     BrowserModule,
     AppRoutingModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    HttpClientModule
   ],
   exports: [
     FormsModule,
@@ -23,4 +25,5 @@ import { FormsModule } from '@angular/forms';
     NoopAnimationsModule
   ]
 })
-export class SharedModule {}
+export class SharedModule {
+}

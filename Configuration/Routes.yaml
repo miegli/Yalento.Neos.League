@@ -1,0 +1,15 @@
+
+##
+# Service
+
+-
+  name:  'Backend'
+  uriPattern: 'neos/yalento/<ServiceSubRoutes>'
+  defaults:
+    '@package':    'Yalento.Neos.League'
+    '@action':     'index'
+    '@format':     'html'
+  subRoutes:
+    'ServiceSubRoutes':
+      package: 'Yalento.Neos.League'
+      suffix:  'Service'

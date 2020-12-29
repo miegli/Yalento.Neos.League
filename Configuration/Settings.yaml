@@ -1,4 +1,26 @@
 Neos:
+  Flow:
+    mvc:
+      routes:
+        'Yalento.Neos.League':
+          position: 'before Neos.Neos'
+    security:
+      authentication:
+        providers:
+          'Neos.Neos:Backend':
+            requestPatterns:
+              'Yalento.Neos.League:Controllers':
+                pattern: 'ControllerObjectName'
+                patternOptions:
+                  controllerObjectNamePattern: 'Yalento\Neos\League\Controller\.*'
+    firewall:
+      rejectAll: TRUE
+      filters:
+        'Yalento.Neos.League:Firewall':
+          pattern: 'Yalento\Neos\League\Security\RequestPattern\ApplicationFirewallPattern'
+          interceptor: 'AccessGrant'
+
+
   Neos:
     fusion:
       autoInclude:

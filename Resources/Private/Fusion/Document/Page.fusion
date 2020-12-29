@@ -1,6 +1,11 @@
 prototype(Yalento.Neos.League:Document.Page) < prototype(Neos.Neos:Document) {
     body = null
     renderer = Neos.Neos:Page {
+
+        bodyTag {
+            attributes.data-yalento-neos-league-base-url = '/neos/yalento/league/nodes'
+        }
+
         head {
             stylesheets {
                 league = Yalento.Neos.League:Document.Fragment.StyleSheets

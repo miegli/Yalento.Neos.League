@@ -1,0 +1,18 @@
+#                                                                        #
+# Security policy for the Neos package                                   #
+#                                                                        #
+
+privilegeTargets:
+
+  'Neos\Flow\Security\Authorization\Privilege\Method\MethodPrivilege':
+    'Yalento.Neos.League:PublicFrontendAccess':
+      matcher: 'method(Yalento\Neos\League\Controller\NodeController->jsonAction())'
+
+roles:
+
+  'Neos.Flow:Everybody':
+    privileges:
+      - privilegeTarget: 'Yalento.Neos.League:PublicFrontendAccess'
+        permission: GRANT
+      - privilegeTarget: 'Neos.Neos:Backend.OtherUsersPersonalWorkspaceAccess'
+        permission: GRANT

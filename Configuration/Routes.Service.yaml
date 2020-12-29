@@ -1,0 +1,9 @@
+-
+  name: 'Yalento.Neos.League'
+  uriPattern: 'league/nodes/{nodeIdentifier}'
+  defaults:
+    '@package': 'Yalento.Neos.League'
+    '@controller': 'Node'
+    '@action': 'json'
+    '@format': 'json'
+  appendExceedingArguments: true
