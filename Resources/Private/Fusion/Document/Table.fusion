@@ -1,6 +1,11 @@
 prototype(Yalento.Neos.League:Document.Table) < prototype(Yalento.Neos.League:Document.Page) {
 
-    body = ''
+    body = Neos.Fusion:Fragment {
+        id = ${q(node).property('_identifier')}
+        renderer = afx`
+            <app-yalento-league-table id={props.id}></app-yalento-league-table>
+        `
+    }
 
 }
 

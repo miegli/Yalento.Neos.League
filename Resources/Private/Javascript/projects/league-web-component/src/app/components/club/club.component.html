@@ -1,3 +1,5 @@
 <div class="app-yalento-league-club" (cdkObserveContent)="observeContent()">
-  <p>club works11!</p>
+  <div *ngIf="club$ | async as club">
+    {{club | json}}
+  </div>
 </div>

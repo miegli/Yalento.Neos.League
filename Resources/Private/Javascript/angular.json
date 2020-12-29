@@ -30,7 +30,10 @@
             "styles": [
               "projects/league-web-component/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "yalento"
+            ]
           },
           "configurations": {
             "production": {
