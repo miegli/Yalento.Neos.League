@@ -14,7 +14,7 @@
       ui:
         label: i18n
         inspector:
-          group: 'league'
+          group: 'tournament'
           position: 1
     date:
       type: DateTime
@@ -23,7 +23,7 @@
         label: i18n
         reloadIfChanged: true
         inspector:
-          group: 'league'
+          group: 'tournament'
           position: 2
           editorOptions:
             format: 'd.m.Y'
@@ -33,14 +33,37 @@
         label: i18n
         reloadIfChanged: true
         inspector:
-          group: 'league'
+          group: 'tournament'
           position: 10
           editorOptions:
             allowEmpty: true
             format: 'H:i'
             minuteStep: 1
+    location:
+      type: reference
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        inspector:
+          group: 'tournament'
+          position: 20
+          editorOptions:
+            threshold: 1
+            nodeTypes: [ 'Yalento.Neos.League:Document.Location' ]
+    organizer:
+      type: reference
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        inspector:
+          group: 'tournament'
+          position: 30
+          editorOptions:
+            threshold: 1
+            nodeTypes: [ 'Yalento.Neos.League:Document.Club' ]
     _hidden:
       ui:
         label: i18n
         inspector:
-          group: 'league'
+          group: 'tournament'
+          position: 100

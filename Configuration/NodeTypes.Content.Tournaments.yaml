@@ -13,13 +13,13 @@
       ui:
         label: i18n
         inspector:
-          group: 'league'
+          group: 'tournaments'
           position: 1
     _hidden:
       ui:
         label: i18n
         inspector:
-          group: 'league'
+          group: 'tournaments'
 
 'Yalento.Neos.League:Content.Tournaments.SingleRound':
   abstract: true

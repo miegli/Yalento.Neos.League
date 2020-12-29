@@ -6,6 +6,22 @@
                 <source>Liga</source>
                 <target state="needs-translation">Liga</target>
             </trans-unit>
+            <trans-unit id="groups.game" xml:space="preserve">
+                <source>Spiel</source>
+                <target state="needs-translation">Spiel</target>
+            </trans-unit>
+            <trans-unit id="groups.tournament" xml:space="preserve">
+                <source>Turnier</source>
+                <target state="needs-translation">Turnier</target>
+            </trans-unit>
+            <trans-unit id="groups.tournaments" xml:space="preserve">
+                <source>Turniere</source>
+                <target state="needs-translation">Turniere</target>
+            </trans-unit>
+            <trans-unit id="groups.club" xml:space="preserve">
+                <source>Verein</source>
+                <target state="needs-translation">Verein</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

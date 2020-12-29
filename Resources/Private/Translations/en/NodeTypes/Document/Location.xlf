@@ -3,10 +3,10 @@
     <file original="" product-name="Yalento.Neos.League" source-language="en" datatype="plaintext">
         <body>
             <trans-unit id="ui.label" xml:space="preserve">
-                <source>Team</source>
+                <source>Spielort</source>
             </trans-unit>
-            <trans-unit id="properties.title" xml:space="preserve">
-                <source>Teamname</source>
+            <trans-unit id="properties.googlePlusCode" xml:space="preserve">
+                <source>Google Plus Code</source>
             </trans-unit>
         </body>
     </file>

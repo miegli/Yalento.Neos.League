@@ -17,6 +17,12 @@
             <trans-unit id="properties.startTime" xml:space="preserve">
                 <source>Startzeit (1. Spiel)</source>
             </trans-unit>
+            <trans-unit id="properties.location" xml:space="preserve">
+                <source>Spielort</source>
+            </trans-unit>
+            <trans-unit id="properties.organizer" xml:space="preserve">
+                <source>Veranstalter</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

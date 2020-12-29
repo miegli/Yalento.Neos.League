@@ -62,6 +62,11 @@ Neos:
               ui:
                 label: 'Einzelne Spiel'
                 icon: 'balance-scale-right'
+            'location':
+              baseNodeType: 'Yalento.Neos.League:Document.Location'
+              ui:
+                label: 'Spielorte'
+                icon: 'map-marker-alt'
     nodeTypes:
       groups:
         league:

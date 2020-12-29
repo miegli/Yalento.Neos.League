@@ -12,14 +12,14 @@
       ui:
         label: i18n
         inspector:
-          group: 'league'
+          group: 'game'
           position: 1
     date:
       type: DateTime
       ui:
         label: i18n
         inspector:
-          group: 'league'
+          group: 'game'
           position: 2
           editorOptions:
             format: 'd.m.Y H:i'
@@ -29,7 +29,7 @@
       ui:
         label: i18n
         inspector:
-          group: 'league'
+          group: 'game'
           editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
           editorOptions:
             values:
@@ -44,7 +44,7 @@
       ui:
         label: i18n
         inspector:
-          group: 'league'
+          group: 'game'
           editorOptions:
             threshold: 1
             nodeTypes: [ 'Yalento.Neos.League:Document.TableTeam' ]
@@ -53,12 +53,30 @@
       ui:
         label: i18n
         inspector:
-          group: 'league'
+          group: 'game'
           editorOptions:
             threshold: 1
             nodeTypes: [ 'Yalento.Neos.League:Document.TableTeam' ]
+    location:
+      type: reference
+      ui:
+        label: i18n
+        inspector:
+          group: 'game'
+          editorOptions:
+            threshold: 1
+            nodeTypes: [ 'Yalento.Neos.League:Document.Location' ]
+    organizer:
+      type: reference
+      ui:
+        label: i18n
+        inspector:
+          group: 'game'
+          editorOptions:
+            threshold: 1
+            nodeTypes: [ 'Yalento.Neos.League:Document.Club' ]
     _hidden:
       ui:
         label: i18n
         inspector:
-          group: 'league'
+          group: 'game'

@@ -59,6 +59,14 @@ class NodeDataAspect
             $this->postProcessUpdateTournamentDate($node, $value);
         }
 
+        if ($node->getNodeType()->isOfType('Yalento.Neos.League:Content.Tournament') && $propertyName === 'location') {
+            $this->postProcessUpdateTournamentLocation($node, $value);
+        }
+
+        if ($node->getNodeType()->isOfType('Yalento.Neos.League:Content.Tournament') && $propertyName === 'organizer') {
+            $this->postProcessUpdateTournamentOrganizer($node, $value);
+        }
+
         if ($node->getNodeType()->isOfType('Yalento.Neos.League:Content.Tournament') && $propertyName === 'startTime') {
             $this->postProcessUpdateTournamentStartTime($node, $value);
         }
@@ -117,6 +125,43 @@ class NodeDataAspect
                 $gameDate = $childNode->getProperty('date');
                 $gameDate->setDate(intval($tournamentDate->format('Y')), intval($tournamentDate->format('m')), intval($tournamentDate->format('d')));
                 $childNode->setProperty('date', $gameDate);
+            }
+        }
+    }
+
+    /**
+     * @param Node $node
+     * @param $value
+     * @throws \Neos\ContentRepository\Exception\NodeException
+     * @throws \Neos\ContentRepository\Exception\NodeTypeNotFoundException
+     * @throws \Neos\Flow\Property\Exception
+     * @throws \Neos\Flow\Security\Exception
+     */
+    private function postProcessUpdateTournamentLocation(Node $node, $value)
+    {
+
+        /** @var Node $childNode * */
+        foreach ($node->findChildNodes() as $childNode) {
+            if ($childNode->getNodeType()->isOfType('Yalento.Neos.League:Content.Game')) {
+                $childNode->setProperty('location', $value);
+            }
+        }
+    }
+
+    /**
+     * @param Node $node
+     * @param $value
+     * @throws \Neos\ContentRepository\Exception\NodeException
+     * @throws \Neos\ContentRepository\Exception\NodeTypeNotFoundException
+     * @throws \Neos\Flow\Property\Exception
+     * @throws \Neos\Flow\Security\Exception
+     */
+    private function postProcessUpdateTournamentOrganizer(Node $node, $value)
+    {
+        /** @var Node $childNode * */
+        foreach ($node->findChildNodes() as $childNode) {
+            if ($childNode->getNodeType()->isOfType('Yalento.Neos.League:Content.Game')) {
+                $childNode->setProperty('organizer', $value);
             }
         }
     }

@@ -22,3 +22,9 @@
         league:
           label: i18n
           position: 1
+        game:
+          label: i18n
+          position: 1
+        tournaments:
+          label: i18n
+          position: 1

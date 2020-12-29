@@ -33,3 +33,4 @@
       'Yalento.Neos.League:Document.Chessboard': false
       'Yalento.Neos.League:Document.SingleGame': false
       'Yalento.Neos.League:Document.Knockout': false
+      'Yalento.Neos.League:Document.Location': false

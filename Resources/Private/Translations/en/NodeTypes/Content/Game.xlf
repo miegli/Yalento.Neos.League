@@ -32,6 +32,12 @@
             <trans-unit id="properties.title" xml:space="preserve">
                 <source>Bezeichnung</source>
             </trans-unit>
+            <trans-unit id="properties.location" xml:space="preserve">
+                <source>Spielort</source>
+            </trans-unit>
+            <trans-unit id="properties.organizer" xml:space="preserve">
+                <source>Veranstalter</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

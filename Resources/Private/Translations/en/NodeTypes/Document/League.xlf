@@ -26,7 +26,9 @@
             <trans-unit id="creationDialog.autogenerate.selectBoxEditor.values.singleGamesDoubleRound" xml:space="preserve">
                 <source>Einzelspiele (doppelte Runde)</source>
             </trans-unit>
-
+            <trans-unit id="properties.title" xml:space="preserve">
+                <source>Liga / Name</source>
+            </trans-unit>
             <trans-unit id="properties.autogenerate" xml:space="preserve">
                 <source>Automatisch generieren</source>
             </trans-unit>
