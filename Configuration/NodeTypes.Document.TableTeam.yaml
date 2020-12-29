@@ -31,3 +31,10 @@
         label: i18n
         inspector:
           group: 'league'
+    pointdeduction:
+      type: integer
+      defaultValue: 0
+      ui:
+        label: i18n
+        inspector:
+          group: 'league'

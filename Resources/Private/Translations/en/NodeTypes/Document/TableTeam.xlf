@@ -11,6 +11,9 @@
             <trans-unit id="properties.retreat" xml:space="preserve">
                 <source>Team zurückgezogen</source>
             </trans-unit>
+            <trans-unit id="properties.pointdeduction" xml:space="preserve">
+                <source>Punkteabzug</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>
