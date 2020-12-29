@@ -25,3 +25,9 @@
           editorOptions:
             threshold: 1
             nodeTypes: [ 'Yalento.Neos.League:Document.Team' ]
+    retreat:
+      type: boolean
+      ui:
+        label: i18n
+        inspector:
+          group: 'league'

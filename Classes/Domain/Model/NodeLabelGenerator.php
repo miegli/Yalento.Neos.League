@@ -52,10 +52,16 @@ class NodeLabelGenerator implements NodeLabelGeneratorInterface
             $number = explode("team", $node->getNodeName())[1];
 
             if ($node->getProperty('team')) {
-                return '(' . $number . ') ' . $node->getProperty('team')->getProperty('title');
+                $name = '(' . $number . ') ' . $node->getProperty('team')->getProperty('title');
+            } else {
+                $name = '(' . $number . ')' . '';
             }
 
-            return '(' . $number . ')' . ' unknown';
+            if ($node->getProperty('retreat')) {
+                $name .= ' ❌';
+            }
+
+            return $name;
         }
 
         if ($node->getNodeType()->isOfType('Yalento.Neos.League:Content.Game')) {

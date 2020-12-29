@@ -25,6 +25,9 @@
         game:
           label: i18n
           position: 1
+        tournament:
+          label: i18n
+          position: 1
         tournaments:
           label: i18n
           position: 1
