@@ -36,7 +36,7 @@ class NodeController extends ActionController
     public function jsonAction(string $nodeIdentifier): string
     {
         $routeParameters = $this->request->getHttpRequest()->getAttribute('routingParameters') ?? RouteParameters::createEmpty();
-        $json = $this->renderNodeService->toJson($nodeIdentifier, $this->userService->getPersonalWorkspace(), $routeParameters);
+        $json = $this->renderNodeService->toJson($nodeIdentifier, $this->userService->getPersonalWorkspace(), $routeParameters, $this->getControllerContext());
 
         if (!$json) {
             $this->response->setStatusCode(404);

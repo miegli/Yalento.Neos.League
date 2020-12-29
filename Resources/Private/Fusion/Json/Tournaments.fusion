@@ -1,0 +1,5 @@
+prototype(Yalento.Neos.League:Json.Tournaments) < prototype(Yalento.Neos.League:Json.DataStructure) {
+
+
+
+}

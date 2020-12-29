@@ -1,0 +1,9 @@
+prototype(Yalento.Neos.League:Json.Game) < prototype(Yalento.Neos.League:Json.DataStructure) {
+
+    home = ${Yalento.Neos.League.Json.getProperty(node, 'home.team.title')}
+    away = ${Yalento.Neos.League.Json.getProperty(node, 'away.team.title')}
+    location = ${Yalento.Neos.League.Json.getProperty(node, 'location.title')}
+    organizer = ${Yalento.Neos.League.Json.getProperty(node, 'organizer.title')}
+    date = ${Date.format(Yalento.Neos.League.Json.getProperty(node, 'date'), 'utc')}
+
+}

@@ -19,8 +19,6 @@ Neos:
         'Yalento.Neos.League:Firewall':
           pattern: 'Yalento\Neos\League\Security\RequestPattern\ApplicationFirewallPattern'
           interceptor: 'AccessGrant'
-
-
   Neos:
     fusion:
       autoInclude:
@@ -117,3 +115,4 @@ Neos:
   Fusion:
     defaultContext:
       Yalento.Neos.League.Label: Yalento\Neos\League\Eel\Helper\LabelHelper
+      Yalento.Neos.League.Json: Yalento\Neos\League\Eel\Helper\JsonHelper

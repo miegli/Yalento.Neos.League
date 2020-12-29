@@ -1,0 +1,32 @@
+json = Yalento.Neos.League:Json.ContentCase {
+
+}
+
+prototype(Yalento.Neos.League:Json.ContentCase) < prototype(Neos.Neos:ContentCase) {
+
+    @context.node = ${element ? element : node}
+
+    default {
+        condition = true
+        type = ${Yalento.Neos.League.Json.nodeType(element ? element : node)}
+    }
+
+}
+
+prototype(Yalento.Neos.League:Json.DataStructure) < prototype(Neos.Fusion:DataStructure) {
+
+    identifier = ${node.identifier}
+    label = ${node.label}
+
+}
+
+prototype(Yalento.Neos.League:Json.RawCollection) < prototype(Neos.Fusion:RawCollection) {
+
+    collection = ${q(node).find('[instanceof Neos.Neos:Document]')}
+    itemName = 'element'
+    itemRenderer = Yalento.Neos.League:Json.ContentCase {
+
+    }
+
+
+}

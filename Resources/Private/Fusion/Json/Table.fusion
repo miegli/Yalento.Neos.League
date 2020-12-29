@@ -1,0 +1,13 @@
+prototype(Yalento.Neos.League:Json.Table) < prototype(Yalento.Neos.League:Json.DataStructure) {
+
+    name = ${q(node).property('title')}
+
+    teams = Yalento.Neos.League:Json.RawCollection {
+        collection = ${q(node).find('[instanceof Yalento.Neos.League:Document.TableTeam]')}
+    }
+
+    tournaments = Yalento.Neos.League:Json.RawCollection {
+        collection = ${q(node).find('[instanceof Yalento.Neos.League:Content.Tournament]')}
+    }
+
+}

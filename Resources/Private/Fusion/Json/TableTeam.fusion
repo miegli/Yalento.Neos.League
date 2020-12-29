@@ -1,0 +1,5 @@
+prototype(Yalento.Neos.League:Json.TableTeam) < prototype(Yalento.Neos.League:Json.DataStructure) {
+
+    name = ${Yalento.Neos.League.Json.getProperty(node, 'team.title')}
+
+}
