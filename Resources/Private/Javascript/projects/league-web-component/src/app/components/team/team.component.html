@@ -1,1 +1,5 @@
-<p>team works!</p>
+<div class="app-yalento-league-team" (cdkObserveContent)="observeContent()">
+  <div *ngIf="team$ | async as team">
+    {{team.name}}
+  </div>
+</div>
