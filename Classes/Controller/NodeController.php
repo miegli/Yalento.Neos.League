@@ -35,6 +35,7 @@ class NodeController extends ActionController
      */
     public function jsonAction(string $nodeIdentifier): string
     {
+        $this->response->addHttpHeader('Access-Control-Allow-Origin', '*');
         $routeParameters = $this->request->getHttpRequest()->getAttribute('routingParameters') ?? RouteParameters::createEmpty();
         $json = $this->renderNodeService->toJson($nodeIdentifier, $this->userService->getPersonalWorkspace(), $routeParameters, $this->getControllerContext());
 
@@ -42,6 +43,8 @@ class NodeController extends ActionController
             $this->response->setStatusCode(404);
             return '';
         }
+
+        $this->response->addHttpHeader('Content-type', 'application/json');
 
         return $json;
 

@@ -1,6 +1,6 @@
 prototype(Yalento.Neos.League:Json.Tournament) < prototype(Yalento.Neos.League:Json.DataStructure) {
 
-    games = Yalento.Neos.League:Json.RawCollection {
+    games = Yalento.Neos.League:Json.Collection {
         collection = ${q(node).find('[instanceof Yalento.Neos.League:Content.Game]')}
     }
 

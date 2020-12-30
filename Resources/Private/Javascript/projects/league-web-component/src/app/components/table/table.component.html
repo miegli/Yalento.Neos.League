@@ -1,5 +1,10 @@
 <div class="app-yalento-league-table" (cdkObserveContent)="observeContent()">
   <div *ngIf="table$ | async as table">
-    {{table | json}}
+    <h1>{{table.name}}</h1>
+    <ul>
+      <li *ngFor="let team of table.teams">
+        <app-yalento-league-table-team [attr.id]="team.identifier"></app-yalento-league-table-team>
+      </li>
+    </ul>
   </div>
 </div>

@@ -3,7 +3,7 @@ prototype(Yalento.Neos.League:Document.Page) < prototype(Neos.Neos:Document) {
     renderer = Neos.Neos:Page {
 
         bodyTag {
-            attributes.data-yalento-neos-league-base-url = '/neos/yalento/league/nodes'
+            attributes.data-yalento-neos-league-base-url = '/neos/yalento/league'
         }
 
         head {

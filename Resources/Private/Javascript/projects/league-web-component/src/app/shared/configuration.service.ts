@@ -17,7 +17,7 @@ export class ConfigurationService {
       appId: '__FIREBASE_CONFIGURATION__apiKey__',
       measurementId: '__FIREBASE_CONFIGURATION__apiKey__'
     },
-    restApiBaseUrl: null
+    restApiBaseUrl: '__REST_API__baseUrl__'
   }
 
 
@@ -37,12 +37,13 @@ export class ConfigurationService {
     }
 
     try {
-      this.configuration.restApiBaseUrl = (document.getRootNode() as any).getElementsByTagName('body')[0].getAttribute('data-yalento-neos-league-base-url');
+      const restApiBaseUrlOverride = (document.getRootNode() as any).getElementsByTagName('body')[0].getAttribute('data-yalento-neos-league-base-url');
+      if (restApiBaseUrlOverride) {
+        this.configuration.restApiBaseUrl = restApiBaseUrlOverride;
+      }
     } catch (e) {
-
     }
 
-    console.log(window, this.configuration);
   }
 
 }

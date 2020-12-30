@@ -1,0 +1,5 @@
+<div class="app-yalento-league-table" (cdkObserveContent)="observeContent()">
+  <div *ngIf="tableTeam$ | async as tableTeam">
+    {{tableTeam.name}}
+  </div>
+</div>

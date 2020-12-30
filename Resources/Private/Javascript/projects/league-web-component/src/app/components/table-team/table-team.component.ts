@@ -1,18 +1,18 @@
 import {ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {RepositoryService} from "../../shared/repository.service";
-import {Table} from "../../shared/models/Table";
 import {Observable} from "yalento";
+import {RepositoryService} from "../../shared/repository.service";
+import {TableTeam} from "../../shared/models/TableTeam";
 
 @Component({
-  selector: 'app-yalento-league-table',
-  templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss']
+  selector: 'app-yalento-league-table-team',
+  templateUrl: './table-team.component.html',
+  styleUrls: ['./table-team.component.scss']
 })
-export class TableComponent implements OnInit, OnChanges {
+export class TableTeamComponent implements OnInit, OnChanges {
 
   @Input() id: string;
 
-  table$: Observable<Table>;
+  tableTeam$: Observable<TableTeam>;
 
   public constructor(private readonly changeDetectorRef: ChangeDetectorRef,
                      private readonly repositoryService: RepositoryService) {
@@ -25,7 +25,7 @@ export class TableComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['id']) {
-      this.table$ = this.repositoryService.selectOneByIdentifier<Table>(changes['id']['currentValue'], 'Table');
+      this.tableTeam$ = this.repositoryService.selectOneByIdentifier<TableTeam>(changes['id']['currentValue'], 'TableTeam');
     }
   }
 
@@ -33,3 +33,4 @@ export class TableComponent implements OnInit, OnChanges {
     this.changeDetectorRef.detectChanges();
   }
 }
+

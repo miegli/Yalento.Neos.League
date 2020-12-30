@@ -15,6 +15,7 @@ namespace Yalento\Neos\League\Eel\Helper;
 use Neos\ContentRepository\Domain\Model\NodeInterface;
 use Neos\Flow\Annotations as Flow;
 use Neos\Eel\ProtectedContextAwareInterface;
+use phpDocumentor\Reflection\Types\Boolean;
 
 /**
  * Array helpers for Eel contexts
@@ -37,7 +38,17 @@ class JsonHelper implements ProtectedContextAwareInterface
      */
     public function nodeType(NodeInterface $node): string
     {
-        return $this->calculateRendererNodeType($node);
+        return $this->calculateRendererNodeType($node, false);
+    }
+
+    /**
+     * Get nodeType to render in json path
+     *
+     * @return string
+     */
+    public function modelType(NodeInterface $node): string
+    {
+        return $this->calculateRendererNodeType($node, true);
     }
 
     /**
@@ -71,13 +82,18 @@ class JsonHelper implements ProtectedContextAwareInterface
         return true;
     }
 
-    private function calculateRendererNodeType(NodeInterface $node): string
+    private function calculateRendererNodeType(NodeInterface $node, bool $calculateModelName): string
     {
 
         $renderNodeType = str_replace('Yalento.Neos.League:Document', 'Yalento.Neos.League:Json', $node->getNodeType()->getName());
         $renderNodeType = str_replace('Yalento.Neos.League:Content', 'Yalento.Neos.League:Json', $renderNodeType);
         $renderNodeType = preg_split('/[0-9].*$/', $renderNodeType)[0];
         $renderNodeType = preg_replace('/[^A-z]$/', '', $renderNodeType);
+
+        if ($calculateModelName) {
+            $list = explode(".", $renderNodeType);
+            return $list[count($list) - 1];
+        }
 
         return $renderNodeType;
 

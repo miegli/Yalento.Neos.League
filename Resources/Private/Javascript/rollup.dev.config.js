@@ -11,6 +11,12 @@ export const firebaseConfig =
     fs.readFileSync('../../../../../Configuration/Development/Settings.yaml', 'utf8')
   )['Yalento']['Neos']['League']['FirebaseConfig'];
 
+export const restApiConfig =
+  yaml.parse(
+    fs.readFileSync('../../../../../Configuration/Production/Settings.yaml', 'utf8')
+  )['Yalento']['Neos']['League']['RestApiConfig'];
+
+
 export default {
   input: 'src/lib.js',
   output: {
@@ -42,7 +48,8 @@ export default {
       '__FIREBASE_CONFIGURATION__storageBucket__': firebaseConfig.storageBucket,
       '__FIREBASE_CONFIGURATION__messagingSenderId__': firebaseConfig.messagingSenderId,
       '__FIREBASE_CONFIGURATION__appId__': firebaseConfig.appId,
-      '__FIREBASE_CONFIGURATION__measurementId__': firebaseConfig.measurementId
+      '__FIREBASE_CONFIGURATION__measurementId__': firebaseConfig.measurementId,
+      '__REST_API__baseUrl__': restApiConfig.baseUrl,
     })
   ],
   onwarn(warning) {

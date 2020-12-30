@@ -1,5 +1,12 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, finalize, Observable, Repository, Subject, switchMap, takeUntil} from "yalento";
+import {
+  finalize,
+  IEntity,
+  Observable,
+  Repository,
+  Subject,
+  switchMap
+} from "yalento";
 import {Fallback} from "./models/Fallback";
 import {Table} from "./models/Table";
 import {Models} from "./interfaces/models";
@@ -10,6 +17,9 @@ import 'firebase/firestore';
 import {ConfigurationService} from "./configuration.service";
 import {HttpClient} from "@angular/common/http";
 import {Configuration} from "./models/Configuration";
+import eachDeep from 'deepdash-es/eachDeep';
+import {Team} from "./models/Team";
+import {TableTeam} from "./models/TableTeam";
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +29,9 @@ export class RepositoryService {
   private models: { [P in keyof Models]: Models[P] } = {
     Fallback: Fallback,
     Table: Table,
-    Club: Club
+    Club: Club,
+    Team: Team,
+    TableTeam: TableTeam
   }
 
   private configuration: Configuration;
@@ -32,9 +44,6 @@ export class RepositoryService {
     const globalName = 'yalento-global-repository-' + name;
     if ((document.getRootNode() as any)[globalName] === undefined) {
       (document.getRootNode() as any)[globalName] = new Repository(this.models[name] || this.models['fallback'], name);
-      if (!this.configuration.restApiBaseUrl) {
-        ((document.getRootNode() as any)[globalName] as Repository<any>).connectFirestore(this.getFirebaseApp().firestore());
-      }
     }
     return (document.getRootNode() as any)[globalName];
   }
@@ -44,32 +53,22 @@ export class RepositoryService {
    * @param identifier
    * @param model
    */
-  public selectOneByIdentifier<T>(identifier: string | BehaviorSubject<string>, model: keyof Models): Observable<T> {
+  public selectOneByIdentifier<T>(identifier: string, model: keyof Models): Observable<T> {
 
     const repository = this.getRepository<T>(model);
     const destroyed = new Subject<any>();
 
-    if (this.configuration.restApiBaseUrl) {
-      if (typeof identifier === 'string') {
-        this.loadOneByIdentifier<T>(repository, identifier, model);
-      } else {
-        identifier.asObservable().pipe(
-          takeUntil(destroyed)
-        ).subscribe((id) => this.loadOneByIdentifier<T>(repository, id, model));
-
-      }
-    }
-
-    return repository.select({
-      where: 'identifier LIKE ?',
-      params: [identifier]
-    }).getReadOnlyResultsAsObservable().pipe(
-      switchMap((tables) => tables.length ? of(tables[0]) : EMPTY),
-      finalize(() => {
-        destroyed.next();
-      })
-    )
-
+    return this.loadOneByIdentifierIfNotExisting(repository, identifier, model).pipe(
+      switchMap(() => repository.select({
+          where: 'identifier LIKE ?',
+          params: [identifier]
+        }).getReadOnlyResultsAsObservable().pipe(
+        switchMap((results) => results.length ? of(results[0]) : EMPTY),
+        finalize(() => {
+          destroyed.next();
+        }))
+      )
+    );
 
   }
 
@@ -86,26 +85,88 @@ export class RepositoryService {
   }
 
   /**
+   * load one by identifier from Rest endpoint only if object is not existing yet
+   * @param repository
+   * @param identifier
+   * @param model
+   * @private
+   */
+  private loadOneByIdentifierIfNotExisting(repository: Repository<any>, identifier: string, model: keyof Models): Observable<void> {
+
+    return new Observable((observer) => {
+      repository.exec({
+        where: 'identifier LIKE ?',
+        params: [identifier],
+        limit: 1
+      }).then((results) => {
+        if (results.length === 0) {
+          this.loadOneByIdentifier(repository, identifier, model).toPromise().finally(() => {
+            observer.next()
+          });
+        } else {
+          observer.next();
+        }
+      });
+    })
+
+
+  }
+
+  /**
    * load one by identifier from Rest endpoint
    * @param repository
    * @param identifier
    * @param model
    * @private
    */
-  private loadOneByIdentifier<T>(repository: Repository<T>, identifier: string, model: keyof Models) {
+  private loadOneByIdentifier<T>(repository: Repository<T>, identifier: string, model: keyof Models): Observable<void> {
 
-    if (!this.configuration.restApiBaseUrl) {
-      return;
-    }
+    return new Observable((observer) => {
 
-    this.httpClient.get(`${this.configuration.restApiBaseUrl}/${identifier}`).toPromise().then(
-      (data) => {
-        console.log('try to add', data);
-        repository.create({identifier, ...data as any}, identifier, null, 'firestore').then((c) => console.log('created', c)).catch((e) => console.log('e', e))
+      if (!identifier || !this.configuration.restApiBaseUrl) {
+        observer.complete();
+        return;
       }
-    ).catch((e) => console.log(e));
+
+      this.httpClient.get(`${this.configuration.restApiBaseUrl}/nodes/${identifier}`).toPromise().then(
+        (data) => {
+          repository.create({identifier, ...data as any}, identifier, null, 'firestore')
+            .then((entity) => {
+              this.postProcessLoadOneByIdentifier(entity, model);
+              observer.complete();
+            })
+            .catch((e) => observer.error(e))
+        }
+      ).catch((e) => observer.error(e));
+
+    });
 
   }
 
+  private postProcessLoadOneByIdentifier<T>(entity: IEntity<T>, skipModel: string) {
+
+    let childObjects = {};
+
+    eachDeep(
+      entity.getModel(),
+      (child, i, parent, ctx) => {
+        if (child && child.type !== undefined && child.identifier !== undefined && child.type !== skipModel) {
+          if (childObjects[child.type] === undefined) {
+            childObjects[child.type] = [];
+          }
+          childObjects[child.type].push(child);
+        }
+      }
+    );
+
+    // load child objects to corresponding repository
+    Object.keys(childObjects).forEach((modelKey) => {
+      if (this.models[modelKey] !== undefined) {
+        this.getRepository(modelKey).createMany(childObjects[modelKey]).finally();
+      }
+    })
+
+    childObjects = null;
+  }
 
 }
