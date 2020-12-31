@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 import {RepositoryService} from "../../shared/repository.service";
 import {Table} from "../../shared/models/Table";
 import {Observable} from "yalento";
@@ -8,7 +8,7 @@ import {Observable} from "yalento";
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent implements OnInit, OnChanges {
+export class TableComponent implements OnInit {
 
   @Input() id: string;
 
@@ -19,17 +19,7 @@ export class TableComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-
-
+    this.table$ = this.repositoryService.selectOneByIdentifier<Table>(this.id, 'Table');
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['id']) {
-      this.table$ = this.repositoryService.selectOneByIdentifier<Table>(changes['id']['currentValue'], 'Table');
-    }
-  }
-
-  observeContent() {
-    this.changeDetectorRef.detectChanges();
-  }
 }

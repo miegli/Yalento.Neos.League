@@ -25,9 +25,15 @@
             "aot": true,
             "assets": [
               "projects/league-web-component/src/favicon.ico",
-              "projects/league-web-component/src/assets"
+              "projects/league-web-component/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
+              "projects/league-web-component/src/theme.less",
               "projects/league-web-component/src/styles.scss"
             ],
             "scripts": [],

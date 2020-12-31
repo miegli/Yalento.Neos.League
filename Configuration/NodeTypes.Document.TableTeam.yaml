@@ -24,7 +24,7 @@
           group: 'league'
           editorOptions:
             threshold: 1
-            nodeTypes: [ 'Yalento.Neos.League:Document.Team' ]
+            nodeTypes: [ 'Yalento.Neos.League:Document.Team', 'Yalento.Neos.League:Document.TeamCommunity' ]
     retreat:
       type: boolean
       ui:

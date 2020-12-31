@@ -37,6 +37,7 @@
     "document-register-element": "^1.7.2",
     "firebase": "^8.2.1",
     "lodash": "^4.17.20",
+    "ng-zorro-antd": "^11.0.0",
     "rollup-plugin-url": "^3.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
